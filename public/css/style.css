@@ -6,11 +6,12 @@ body {
     margin: 0;
     min-height: 100vh;
     font-family: cursive;
-    color: rgb(31, 41, 55);
-    background-color: rgb(243, 244, 246);
+    color: rgb(243, 244, 246);
+    background-color: rgb(31, 41, 55);
 }
 
-main h1,p {
+main h1,
+p {
     text-align: center;
 }
 
@@ -20,12 +21,12 @@ main h1,p {
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    background-color: white;
-    border-bottom: 1px solid rgb(229, 231, 235);
+    background-color: rgb(31, 41, 55);
+    border-bottom: 1px solid rgb(41, 51, 65);
 }
 
 .site-nav-brand {
-    color: rgb(17, 24, 39);
+    color: rgb(243, 244, 246);
     font-size: 1.1rem;
     font-weight: 700;
     text-decoration: none;
@@ -39,15 +40,16 @@ main h1,p {
 
 .site-nav-link,
 .site-nav-button {
-    color: rgb(55, 65, 81);
+    color: rgb(243, 244, 246);
     font: inherit;
     font-weight: 600;
     text-decoration: none;
+    transition: 0.15s;
 }
 
 .site-nav-link:hover,
 .site-nav-button:hover {
-    color: rgb(17, 24, 39);
+    color: rgb(213, 214, 216);
 }
 
 .site-nav-form {
@@ -72,8 +74,8 @@ main h1,p {
     width: 100%;
     max-width: 440px;
     padding: 32px;
-    background-color: white;
-    border: 1px solid rgb(229, 231, 235);
+    background-color: rgb(38, 49, 65);
+    border: 1px solid rgb(75, 85, 101);
     border-radius: 10px;
 }
 
@@ -84,13 +86,13 @@ main h1,p {
 
 .auth-card-title {
     margin: 0 0 8px;
-    color: rgb(17, 24, 39);
+    color: rgb(243, 244, 246);
     font-size: 2rem;
 }
 
 .auth-card-subtitle {
     margin: 0;
-    color: rgb(107, 114, 128);
+    color: rgb(156, 163, 175);
     line-height: 1.5;
 }
 
@@ -107,7 +109,7 @@ main h1,p {
 }
 
 .form-label {
-    color: rgb(55, 65, 81);
+    color: rgb(209, 213, 219);
     font-size: 0.95rem;
     font-weight: 600;
 }
@@ -115,16 +117,17 @@ main h1,p {
 .form-input {
     width: 100%;
     padding: 12px 14px;
-    color: rgb(17, 24, 39);
+    color: rgb(243, 244, 246);
     font: inherit;
-    background-color: white;
-    border: 1px solid rgb(209, 213, 219);
+    background-color: rgb(31, 41, 55);
+    border: 1px solid rgb(75, 85, 99);
     border-radius: 8px;
     outline: none;
+    transition: 0.15s;
 }
 
 .form-input:focus {
-    border-color: rgb(79, 70, 229);
+    border-color: rgb(129, 140, 248);
 }
 
 .primary-button {
@@ -137,6 +140,7 @@ main h1,p {
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    transition: 0.15s;
 }
 
 .primary-button:hover {
@@ -145,12 +149,12 @@ main h1,p {
 
 .auth-card-footer {
     margin: 22px 0 0;
-    color: rgb(107, 114, 128);
+    color: rgb(156, 163, 175);
     text-align: center;
 }
 
 .text-link {
-    color: rgb(79, 70, 229);
+    color: rgb(165, 180, 252);
     font-weight: 700;
     text-decoration: none;
 }
@@ -181,4 +185,3 @@ main h1,p {
         padding: 24px 20px;
     }
 }
-
