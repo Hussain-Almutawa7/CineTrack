@@ -6,13 +6,9 @@ const ratingSchema = new mongoose.Schema({
         ref: "User",
         required: true,
     },
-    mediaId: {
-        type: Number,
-        required: true,
-    },
-    mediaType: {
-        type: String,
-        enum: ["movie", "tv"],
+    media: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Media",
         required: true,
     },
     rating: {

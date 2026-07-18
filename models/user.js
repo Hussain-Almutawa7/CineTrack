@@ -25,15 +25,8 @@ const userSchema = new mongoose.Schema({
     },
     watchlist: [
         {
-            mediaId: {
-                type: Number,
-                required: true
-            },
-            mediaType: {
-                type: String,
-                enum: ["movie", "tv"],
-                required: true
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Media"
         }
     ],
 }, { timestamps: true, });
