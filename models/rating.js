@@ -19,6 +19,20 @@ const ratingSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
+ratingSchema.index(
+    {
+        user: 1,
+        media: 1,
+    },
+    {
+        unique: true,
+    },
+);
+
+ratingSchema.index({
+    media: 1,
+});
+
 const Rating = mongoose.model("Rating", ratingSchema);
 
 module.exports = Rating;

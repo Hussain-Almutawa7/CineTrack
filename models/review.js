@@ -18,6 +18,20 @@ const reviewSchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
+reviewSchema.index(
+    {
+        user: 1,
+        media: 1,
+    },
+    {
+        unique: true,
+    },
+);
+
+reviewSchema.index({
+    media: 1,
+});
+
 const Review = mongoose.model("Review", reviewSchema);
 
 module.exports = Review;
