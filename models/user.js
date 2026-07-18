@@ -23,17 +23,19 @@ const userSchema = new mongoose.Schema({
         enum: ["admin", "viewer"],
         default: "viewer"
     },
-    watchlist: [{
-        mediaId: {
-            type: Number,
-            required: true
-        },
-        mediaType: {
-            type: String,
-            enum: ["movie", "tv"],
-            required: true
+    watchlist: [
+        {
+            mediaId: {
+                type: Number,
+                required: true
+            },
+            mediaType: {
+                type: String,
+                enum: ["movie", "tv"],
+                required: true
+            }
         }
-    }],
+    ],
 }, { timestamps: true, });
 
 const User = mongoose.model("User", userSchema);
