@@ -22,6 +22,7 @@ const isSignedIn = require("./middleware/is-signed-in.js");
 // Controllers
 const authCtrl = require("./controllers/auth.js");
 const homeCtrl = require("./controllers/home-controller.js");
+const movieCtrl = require("./controllers/movie-controller.js")
 
 const app = express();
 
@@ -45,7 +46,7 @@ app.use(
 
 app.use(passUserToView);
 
-// Auth Routes
+// AUTH ROUTES
 app.get("/auth/sign-up", authCtrl.showSignUpForm);
 app.post("/auth/sign-up", authCtrl.signUp);
 app.get("/auth/sign-in", authCtrl.showSignInForm);
@@ -54,8 +55,11 @@ app.delete("/auth/sign-out", authCtrl.signOut);
 
 app.get("/dashboard", isSignedIn, authCtrl.dashboard);
 
-// Home Route
+// HOME ROUTES
 app.get("/", homeCtrl.home)
+
+// MOVIE ROUTES
+app.get("/movies/:movieId", movieCtrl.movieDetails);
 
 const startServer = async () => {
     try {

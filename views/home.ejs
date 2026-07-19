@@ -5,15 +5,20 @@
         <div class="movie-container">
             <% movies.forEach((movie, index) => { %>
                 <% if(index <= 9) {%>
-                    <div class="movie-items">
-                        <img src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
-                        <div class="movie-text">
-                            <span><%= movie.title %></span>
+                    <a href="/movies/<%= movie.id %>">
+                        <div class="movie-items">
+                            <img src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+                            <div class="movie-text">
+                                <span><%= movie.title %></span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 <% } %>
             <%  }) %>
         </div>
+        <hr>
+
+        
     </main>
 </body>
 
