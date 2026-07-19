@@ -10,11 +10,6 @@ body {
     background-color: rgb(31, 41, 55);
 }
 
-main h1,
-p {
-    text-align: center;
-}
-
 .site-nav {
     padding: 16px 24px;
     display: flex;
@@ -164,6 +159,39 @@ p {
 
 .text-link:hover {
     text-decoration: underline;
+}
+
+.movie-container {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    padding: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+ h1 {
+    margin: 10px
+}
+
+.movie-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 15px;
+    gap: 10px;
+    border-radius: 10px;
+    background-color: rgb(11, 21, 35);
+    cursor: pointer;
+}
+
+.movie-items img {
+    border-radius: 10px;
+}
+
+.movie-text {
+    display: flex;
+    justify-content: space-between;
 }
 
 @media (max-width: 600px) {

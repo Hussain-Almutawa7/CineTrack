@@ -1,19 +1,19 @@
 ﻿<%- include("./partials/nav.ejs") %>
 
     <main>
-        <h1>Authentication App</h1>
-
-        <% if (user) { %>
-            <p>Welcome, <%= user.username %>.</p>
-        <% } else { %>
-            <p>Your Express, MongoDB, Mongoose, EJS, and session setup is ready.</p>
-        <% } %>
-
-        <h1>Popular movies</h1>
-        <% movies.forEach(movie => { %>
-            <p><%= movie.title %></p>
-      <%  }) %>
-
+        <h1>Popular Movies</h1>
+        <div class="movie-container">
+            <% movies.forEach((movie, index) => { %>
+                <% if(index <= 9) {%>
+                    <div class="movie-items">
+                        <img src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+                        <div class="movie-text">
+                            <span><%= movie.title %></span>
+                        </div>
+                    </div>
+                <% } %>
+            <%  }) %>
+        </div>
     </main>
 </body>
 
