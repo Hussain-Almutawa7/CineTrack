@@ -1,10 +1,6 @@
 ﻿const User = require("../models/user");
 const bcrypt = require("bcrypt");
 
-const home = (req, res) => {
-    res.render("home.ejs");
-};
-
 const showSignUpForm = (req, res) => {
     res.render("auth/sign-up.ejs");
 };
@@ -99,7 +95,6 @@ const dashboard = (req, res) => {
 };
 
 module.exports = {
-    home,
     showSignUpForm,
     signUp,
     showSignInForm,

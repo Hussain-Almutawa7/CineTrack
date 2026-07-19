@@ -10,7 +10,7 @@ const tmdbOptions = {
 const getPopularMovies = async() => {
     const response = await fetch(`${TMDB_URL}/movie/popular`, tmdbOptions);
 
-    if(!response.ok) res.send("Failed to fetch popular movies from TMDB");
+    if(!response.ok) throw new Error ("Failed to fetch popular movies from TMDB");
 
     const data = await response.json();
 

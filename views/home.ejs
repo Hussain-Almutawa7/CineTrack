@@ -9,7 +9,10 @@
             <p>Your Express, MongoDB, Mongoose, EJS, and session setup is ready.</p>
         <% } %>
 
-        
+        <h1>Popular movies</h1>
+        <% movies.forEach(movie => { %>
+            <p><%= movie.title %></p>
+      <%  }) %>
 
     </main>
 </body>

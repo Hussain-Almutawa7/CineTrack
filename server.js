@@ -8,7 +8,6 @@ require("dotenv").config();
 
 const methodOverride = require("method-override");
 const { MongoStore } = require("connect-mongo");
-const authCtrl = require("./controllers/auth.js");
 const session = require("express-session");
 const upload = require("./config/multer");
 const mongoose = require("mongoose");
@@ -19,6 +18,10 @@ const path = require("path");
 // Custom MiddleWare
 const passUserToView = require("./middleware/pass-user-to-view.js");
 const isSignedIn = require("./middleware/is-signed-in.js");
+
+// Controllers
+const authCtrl = require("./controllers/auth.js");
+const homeCtrl = require("./controllers/home-controller.js");
 
 const app = express();
 
@@ -42,7 +45,7 @@ app.use(
 
 app.use(passUserToView);
 
-app.get("/", authCtrl.home);
+// Auth Routes
 app.get("/auth/sign-up", authCtrl.showSignUpForm);
 app.post("/auth/sign-up", authCtrl.signUp);
 app.get("/auth/sign-in", authCtrl.showSignInForm);
@@ -50,6 +53,9 @@ app.post("/auth/sign-in", authCtrl.signIn);
 app.delete("/auth/sign-out", authCtrl.signOut);
 
 app.get("/dashboard", isSignedIn, authCtrl.dashboard);
+
+// Home Route
+app.get("/", homeCtrl.home)
 
 const startServer = async () => {
     try {
