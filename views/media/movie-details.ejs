@@ -32,7 +32,7 @@
                             
                             <div class="secondary-button">
                                 <button>Rate Movie</button>
-                                <button>Add Review</button>
+                                <button class="open-add-review">Add Review</button>
                             </div>
                         </div>
                     <% } %>
@@ -41,13 +41,20 @@
         </section>
 
         <% if(user) {%>
-            <section class="add-review">
+            <dialog class="add-review">
                 <form action="/movies/<%= movie.id %>/reviews" method="POST">
-                    <h2>Add Review</h2>
+                    <div class="review-form-header">
+                        <h2>Add Review</h2>
+                        <button class="close-review">X</button>
+                    </div>
                     <textarea name="comment" id="comment" required></textarea>
-                    <button class="primary-button" type="submit">Submit Review</button>
+
+                    <div class="form-review-buttons">
+                        <button class="cancel-review">Cancel</button>
+                        <button class="primary-button submit-review" type="submit">Submit Review</button>
+                    </div>
                 </form>
-            </section>
+            </dialog>
         <% } %>
 
         <section class="display-review">
@@ -64,7 +71,7 @@
         </section>
 
     </main>
-
+    <script src="/scripts/handle-dialog.js"></script>
 </body>
 
 </html>

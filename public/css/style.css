@@ -311,18 +311,22 @@ body {
 
 /* Review Style */
 .add-review {
+    width: 90%;
     max-width: 700px;
-    margin: 20px auto 20px;
     background-color: rgb(38, 49, 65);
-    padding: 15px 20px;
-    padding-bottom: 20px;
     border-radius: 8px;
+    color: white;
+    border: none;
 }
 
-.add-review h2 {
-    text-align: center;
-    margin: 0;
-    margin-bottom: 15px;
+.add-review::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.review-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .add-review textarea {
@@ -337,10 +341,48 @@ body {
     color: white;
     padding: 10px;
     transition: 0.15s;
+    resize: vertical;
 }
 
 .add-review textarea:focus {
     border-color: rgb(129, 140, 248);
+}
+
+.form-review-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-review-buttons button {
+    width: 47%;
+}
+
+.cancel-review {
+    color: white;
+    font: inherit;
+    font-weight: bold;
+    background-color: rgb(51, 65, 85);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+
+.close-review {
+    color: white;
+    font-weight: bold;
+    background-color: rgb(51, 65, 85);
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.cancel-review:hover, .close-review:hover {
+    background-color: rgb(71, 85, 105);
 }
 
 /* Admin Style */
