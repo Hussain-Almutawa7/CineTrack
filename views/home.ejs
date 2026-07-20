@@ -4,7 +4,7 @@
         <h1>Popular Movies</h1>
         <div class="movie-container">
             <% movies.forEach((movie, index) => { %>
-                <% if(index <= 9) {%>
+                <% if(index <= 11) {%>
                     <a href="/movies/<%= movie.id %>">
                         <div class="movie-items">
                             <img src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">

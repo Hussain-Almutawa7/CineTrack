@@ -1,11 +1,40 @@
 <%- include("../partials/nav.ejs") %>
+
     <main>
-        <h1>Movie Details</h1>
-         <img src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
-         <h1><%= movie.title %></h1>
-         <p><%= movie.overview %></p>
-         <p><%= movie.release_date %></p>
-         
+        <section class="media-hero">
+            <div class="media-details-container">
+                <img class="movie-details-poster" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="<%= movie.title %> ">
+
+                <div class="media-details-content">
+                    <h1><%= movie.title %></h1>
+                    <p><%= movie.tagline %></p>
+
+                    <div class="media-info">
+                        <span>⭐ Future Rate</span>
+                        <span><%= movie.release_date.slice(0, 4) || "Not available" %></span>
+                        <span><%= movie.runtime %> min</span>
+                    </div>
+
+                    <div class="genre">
+                        <% movie.genres.forEach(genre => { %>
+                            <span class="genre-style"><%= genre.name %></span>
+                         <% }) %>
+                    </div>
+
+                    <h2>Overview</h2>
+                    <p class="overview"><%= movie.overview %></p>
+
+                    <% if(user) { %>
+                        <div class="media-actions">
+                            <button class="primary-button">Add to Watchlist</button>
+                            
+                            <button class="secondary-button">Rate Movie</button>
+                            <button class="secondary-button">Add Review</button>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </section>
     </main>
 
 </body>
