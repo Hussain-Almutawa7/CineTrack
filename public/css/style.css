@@ -10,6 +10,7 @@ body {
     background-color: rgb(31, 41, 55);
 }
 
+/* Shared Nav Style */
 .site-nav {
     padding: 16px 24px;
     display: flex;
@@ -23,7 +24,7 @@ body {
 .site-nav-brand {
     color: rgb(243, 244, 246);
     font-size: 1.1rem;
-    font-weight: 700;
+    font-weight: bold;
     text-decoration: none;
 }
 
@@ -56,6 +57,7 @@ body {
     cursor: pointer;
 }
 
+/* Authuntecation Style */
 .page-container {
     padding: 40px 20px;
     display: flex;
@@ -128,7 +130,7 @@ body {
     padding: 12px 16px;
     color: white;
     font: inherit;
-    font-weight: 700;
+    font-weight: bold;
     background-color: rgb(79, 70, 229);
     border: none;
     border-radius: 8px;
@@ -153,7 +155,7 @@ body {
 
 .text-link {
     color: rgb(165, 180, 252);
-    font-weight: 700;
+    font-weight: bold;
     text-decoration: none;
 }
 
@@ -161,6 +163,7 @@ body {
     text-decoration: underline;
 }
 
+/* Home Page Style */
 .movie-container {
     display: flex;
     width: 100%;
@@ -195,6 +198,106 @@ body {
     justify-content: space-between;
 }
 
+/* Movie Details Style */
+.media-details-container {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.media-details-poster {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.media-details-content {
+    padding-top: 18px;
+}
+
+.media-details-content h1 {
+    font-size: 40px;
+    margin: 0 0 10px 0;
+}
+
+.tagline {
+    margin: 0 0 20px 0;
+    color: rgb(209, 213, 219);
+    font-style: italic;
+}
+
+.overview {
+    margin: 0 0 20px 0;
+    color: rgb(209, 213, 219);
+}
+
+.media-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.media-info span {
+    padding: 7px 12px;
+    background-color: rgb(31, 41, 55);
+    border: 1px solid rgb(75, 85, 99);
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.genre {
+    margin-bottom: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.genre span {
+    padding: 7px 12px;
+    background-color: rgb(67, 56, 202);
+    border: 1px solid rgb(75, 85, 99);
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.secondary-button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.secondary-button button {
+    width: 47%;
+    border: 1px solid white;
+    background-color: transparent;
+    padding: 10px 15px;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    transition: 0.15s;
+}
+
+.secondary-button button:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Rate Style */
+
+/* Review Style */
+
+/* Admin Style */
+
+
+/* Mobile Repsonsive for some items if there is enough time */
 @media (max-width: 600px) {
     .site-nav {
         padding: 16px 18px;

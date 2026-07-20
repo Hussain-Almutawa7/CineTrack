@@ -1,13 +1,13 @@
 <%- include("../partials/nav.ejs") %>
 
     <main>
-        <section class="media-hero">
+        <section class="media-container">
             <div class="media-details-container">
-                <img class="movie-details-poster" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="<%= movie.title %> ">
+                <img class="media-details-poster" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="<%= movie.title %> ">
 
                 <div class="media-details-content">
                     <h1><%= movie.title %></h1>
-                    <p><%= movie.tagline %></p>
+                    <p class="tagline"><%= movie.tagline %></p>
 
                     <div class="media-info">
                         <span>⭐ Future Rate</span>
@@ -28,8 +28,10 @@
                         <div class="media-actions">
                             <button class="primary-button">Add to Watchlist</button>
                             
-                            <button class="secondary-button">Rate Movie</button>
-                            <button class="secondary-button">Add Review</button>
+                            <div class="secondary-button">
+                                <button>Rate Movie</button>
+                                <button>Add Review</button>
+                            </div>
                         </div>
                     <% } %>
                 </div>
