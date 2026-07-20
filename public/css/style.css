@@ -310,7 +310,8 @@ body {
 /* Rate Style */
 
 /* Review Style */
-.add-review {
+.add-review,
+.edit-review {
     width: 90%;
     max-width: 700px;
     background-color: rgb(38, 49, 65);
@@ -319,7 +320,8 @@ body {
     border: none;
 }
 
-.add-review::backdrop {
+.add-review::backdrop,
+.edit-review::backdrop {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -329,7 +331,8 @@ body {
     align-items: center;
 }
 
-.add-review textarea {
+.add-review textarea,
+.edit-review textarea {
     height: 150px;
     width: 100%;
     margin-bottom: 20px;
@@ -344,7 +347,8 @@ body {
     resize: vertical;
 }
 
-.add-review textarea:focus {
+.add-review textarea:focus,
+.edit-review textarea:focus {
     border-color: rgb(129, 140, 248);
 }
 
@@ -357,7 +361,8 @@ body {
     width: 47%;
 }
 
-.cancel-review {
+.cancel-review,
+.cancel-edit-review {
     color: white;
     font: inherit;
     font-weight: bold;
@@ -369,7 +374,8 @@ body {
 }
 
 
-.close-review {
+.close-review,
+.close-edit-review {
     color: white;
     font-weight: bold;
     background-color: rgb(51, 65, 85);
@@ -381,7 +387,10 @@ body {
     transition: 0.15s;
 }
 
-.cancel-review:hover, .close-review:hover {
+.cancel-review:hover,
+.close-review:hover,
+.cancel-edit-review:hover,
+.close-edit-review:hover {
     background-color: rgb(71, 85, 105);
 }
 

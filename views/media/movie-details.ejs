@@ -5,43 +5,56 @@
             background-image:url('https://image.tmdb.org/t/p/original<%= movie.backdrop_path %>');
             ">
             <div class="media-details-container">
-                <img class="media-details-poster" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="<%= movie.title %> ">
+                <img class="media-details-poster" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>"
+                    alt="<%= movie.title %> ">
 
                 <div class="media-details-content">
-                    <h1><%= movie.title %></h1>
-                    <p class="tagline"><%= movie.tagline %></p>
+                    <h1>
+                        <%= movie.title %>
+                    </h1>
+                    <p class="tagline">
+                        <%= movie.tagline %>
+                    </p>
 
                     <div class="media-info">
                         <span>⭐ Future Rate</span>
-                        <span><%= movie.release_date.slice(0, 4) || "Not available" %></span>
-                        <span><%= movie.runtime %> min</span>
+                        <span>
+                            <%= movie.release_date.slice(0, 4) || "Not available" %>
+                        </span>
+                        <span>
+                            <%= movie.runtime %> min
+                        </span>
                     </div>
 
                     <div class="genre">
-                        <% movie.genres.forEach(genre => { %>
-                            <span class="genre-style"><%= genre.name %></span>
-                         <% }) %>
+                        <% movie.genres.forEach(genre=> { %>
+                            <span class="genre-style">
+                                <%= genre.name %>
+                            </span>
+                            <% }) %>
                     </div>
 
                     <h2>Overview</h2>
-                    <p class="overview"><%= movie.overview %></p>
+                    <p class="overview">
+                        <%= movie.overview %>
+                    </p>
 
                     <% if(user) { %>
                         <div class="media-actions">
                             <button class="primary-button">Add to Watchlist</button>
-                            
+
                             <div class="secondary-button">
                                 <button>Rate Movie</button>
-                                <% reviews.forEach(review => { %>
-                                     <% if(review.user.equals(user.id)) {%>
+                                <% reviews.forEach(review=> { %>
+                                    <% if(review.user.equals(user.id)) {%>
                                         <button class="open-add-review" disabled>Reviewed &#10004;</button>
                                         <% } else { %>
                                             <button class="open-add-review">Add Review</button>
-                                    <%  } %>
-                                <% }) %>
+                                            <% } %>
+                                                <% }) %>
                             </div>
                         </div>
-                    <% } %>
+                        <% } %>
                 </div>
             </div>
         </section>
@@ -64,24 +77,46 @@
         <% } %>
 
         <section class="display-review">
-            <% reviews.forEach(review => { %>
-                <strong><%= review.user.username %></strong>
-                <p><%= review.comment %></p>
+            <% reviews.forEach(review=> { %>
+                <strong>
+                    <%= review.user.username %>
+                </strong>
+                <p>
+                    <%= review.comment %>
+                </p>
 
                 <% if(review.user.equals(user.id)) {%>
-                    <form action="/movies/<%= movie.id %>/reviews/<%= review.id %>?_method=DELETE" method="POST">
+                    <form action="/movies/<%= movie.id %>/reviews/<%= review.id %>?_method=DELETE"
+                        method="POST">
                         <button type="submit">Delete Review</button>
                     </form>
 
-                    <form action="/movies/<%= movie.id %>/reviews/<%= review.id %>?_method=PUT" method="POST">
-                        <button type="submit" class="open-add-review">Edit Review</button>
-                    </form>
-                <% } %>
+                    <button class="open-edit-review">Edit Review</button>
+
+                    <dialog class="edit-review">
+                        <form action="/movies/<%= movie.id %>/reviews/<%= review.id %>?_method=PUT"
+                            method="POST">
+                            <div class="review-form-header">
+                                <h2>Edit Review</h2>
+                                <button class="close-edit-review">X</button>
+                            </div>
+                            <textarea name="comment" id="comment" required>
+                            <%= review.comment %>
+                        </textarea>
+
+                            <div class="form-review-buttons">
+                                <button class="cancel-edit-review">Cancel</button>
+                                <button class="primary-button submit-review" type="submit">Submit
+                                    Review</button>
+                            </div>
+                        </form>
+                    </dialog>
+                    <% } %>
             <% }) %>
         </section>
 
     </main>
     <script src="/scripts/handle-dialog.js"></script>
-</body>
+    </body>
 
-</html>
+    </html>
