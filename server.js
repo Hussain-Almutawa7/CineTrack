@@ -65,6 +65,7 @@ app.get("/movies/:movieId", movieCtrl.movieDetails);
 // REVIEW ROUTES
 app.post("/movies/:movieId/reviews", isSignedIn, reviewCtrl.create);
 app.delete("/movies/:movieId/reviews/:reviewId", isSignedIn, reviewCtrl.deleteReview);
+app.put("/movies/:movieId/reviews/:reviewId", isSignedIn, reviewCtrl.editReview);
 
 const startServer = async () => {
     try {
