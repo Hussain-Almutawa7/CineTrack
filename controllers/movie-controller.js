@@ -6,8 +6,8 @@ const movieDetails = async (req, res) => {
     try {
         const movie = await tmdbService.getMovieDetails(req.params.movieId);
 
-        const media = Media.findOne({
-            tmdbId: Number(req.params.id),
+        const media = await Media.findOne({
+            tmdbId: Number(req.params.movieId),
             mediaType: "movie",
         })
 
