@@ -22,7 +22,8 @@ const isSignedIn = require("./middleware/is-signed-in.js");
 // Controllers
 const authCtrl = require("./controllers/auth.js");
 const homeCtrl = require("./controllers/home-controller.js");
-const movieCtrl = require("./controllers/movie-controller.js")
+const movieCtrl = require("./controllers/movie-controller.js");
+const reviewCtrl = require("./controllers/review-controller.js");
 
 const app = express();
 
@@ -60,6 +61,9 @@ app.get("/", homeCtrl.home)
 
 // MOVIE ROUTES
 app.get("/movies/:movieId", movieCtrl.movieDetails);
+
+// REVIEW ROUTES
+app.post("/movies/:movieId/reviews", isSignedIn, reviewCtrl.create);
 
 const startServer = async () => {
     try {

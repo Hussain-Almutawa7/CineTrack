@@ -42,9 +42,9 @@
 
         <% if(user) {%>
             <section class="add-review">
-                <form action="">
+                <form action="/movies/<%= movie.id %>/reviews" method="POST">
                     <h2>Add Review</h2>
-                    <textarea name="review" id="review"></textarea>
+                    <textarea name="comment" id="comment"></textarea>
                     <button class="primary-button" type="submit">Submit Review</button>
                 </form>
             </section>
