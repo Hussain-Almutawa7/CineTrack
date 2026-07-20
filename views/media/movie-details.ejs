@@ -44,7 +44,7 @@
             <section class="add-review">
                 <form action="/movies/<%= movie.id %>/reviews" method="POST">
                     <h2>Add Review</h2>
-                    <textarea name="comment" id="comment"></textarea>
+                    <textarea name="comment" id="comment" required></textarea>
                     <button class="primary-button" type="submit">Submit Review</button>
                 </form>
             </section>
@@ -52,7 +52,14 @@
 
         <section class="display-review">
             <% reviews.forEach(review => { %>
+                <strong><%= review.user.username %></strong>
                 <p><%= review.comment %></p>
+
+                <% if(review.user.equals(user.id)) {%>
+                    <form action="/movies/<%= movie.id %>/reviews/<%= review.id %>?_method=DELETE" method="POST">
+                        <button type="submit">Delete Review</button>
+                    </form>
+                <% } %>
             <% }) %>
         </section>
 

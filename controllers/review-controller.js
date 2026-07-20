@@ -23,6 +23,12 @@ const create = async (req, res) => {
     res.redirect(`/movies/${req.params.movieId}`)
 }
 
+const deleteReview = async (req, res) => {
+    await Review.findByIdAndDelete(req.params.reviewId);
+     res.redirect(`/movies/${req.params.movieId}`)
+}
+
 module.exports = {
     create,
+    deleteReview,
 }

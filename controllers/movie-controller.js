@@ -16,7 +16,7 @@ const movieDetails = async (req, res) => {
         if (media) {
             reviews = await Review.find({
                 media: media._id
-            });
+            }).populate("user");
         }
 
         res.render("media/movie-details.ejs", { movie, reviews });
