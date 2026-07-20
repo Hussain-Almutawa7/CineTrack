@@ -170,7 +170,9 @@ body {
     gap: 10px;
     overflow-x: auto;
     overflow-y: hidden;
-    scrollbar-width: none;
+    /* scrollbar-width: none; */
+    scrollbar-width: thin;
+
 }
 
 .movie-container a {
@@ -299,9 +301,47 @@ body {
     background-color: rgba(255, 255, 255, 0.08);
 }
 
+@media(max-width: 800px) {
+    .media-details-poster {
+        max-width: 300px;
+    }
+}
+
 /* Rate Style */
 
 /* Review Style */
+.add-review {
+    max-width: 700px;
+    margin: 20px auto 20px;
+    background-color: rgb(38, 49, 65);
+    padding: 15px 20px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+}
+
+.add-review h2 {
+    text-align: center;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.add-review textarea {
+    height: 150px;
+    width: 100%;
+    margin-bottom: 20px;
+    font: inherit;
+    background-color: rgb(31, 41, 55);
+    border: 1px solid rgb(75, 85, 99);
+    border-radius: 8px;
+    outline: none;
+    color: white;
+    padding: 10px;
+    transition: 0.15s;
+}
+
+.add-review textarea:focus {
+    border-color: rgb(129, 140, 248);
+}
 
 /* Admin Style */
 
