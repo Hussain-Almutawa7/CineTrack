@@ -1,10 +1,25 @@
 const tmdbService = require("../services/tmdb");
+const Media = require("../models/media");
+const Review = require("../models/review");
 
 const movieDetails = async (req, res) => {
     try {
         const movie = await tmdbService.getMovieDetails(req.params.movieId);
 
-        res.render("media/movie-details.ejs", { movie });
+        const media = Media.findOne({
+            tmdbId: Number(req.params.id),
+            mediaType: "movie",
+        })
+
+        let reviews = [];
+
+        if (media) {
+            reviews = await Review.find({
+                media: media._id
+            });
+        }
+
+        res.render("media/movie-details.ejs", { movie, reviews });
 
     } catch (error) {
         console.log(error.message);

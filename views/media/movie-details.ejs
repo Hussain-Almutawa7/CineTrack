@@ -50,6 +50,12 @@
             </section>
         <% } %>
 
+        <section class="display-review">
+            <% reviews.forEach(review => { %>
+                <p><%= review.comment %></p>
+            <% }) %>
+        </section>
+
     </main>
 
 </body>
