@@ -199,6 +199,15 @@ body {
 }
 
 /* Movie Details Style */
+.media-container {
+    min-height: 100dvh;
+    padding: 60px 24px;
+    background-position: center;
+    background-size: cover;
+    background-color: rgba(17, 24, 39, 0.8);
+    background-blend-mode: multiply;
+}
+
 .media-details-container {
     width: 100%;
     max-width: 1100px;
@@ -210,7 +219,7 @@ body {
 }
 
 .media-details-poster {
-    width: 100%;
+    max-width: 400px;
     border-radius: 15px;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
@@ -279,7 +288,7 @@ body {
     background-color: transparent;
     padding: 10px 15px;
     color: white;
-    border-radius: 15px;
+    border-radius: 7px;
     cursor: pointer;
     font-family: inherit;
     font-weight: bold;
