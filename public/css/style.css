@@ -394,6 +394,61 @@ body {
     background-color: rgb(71, 85, 105);
 }
 
+.display-review {
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.no-reviews,  .specific-review {
+    background-color: rgb(51, 61, 75);
+    color: lightgrey;
+    padding: 20px;
+    max-width: 700px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.specific-review {
+    text-align: left;
+}
+
+.specific-review-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.specific-review-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.specific-review-buttons button {
+    border: none;
+    padding: 7px 12px;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.delete-review {
+    background-color: darkred;
+}
+
+.delete-review:hover {
+    background-color: rgb(120, 0, 0)
+}
+
+.open-edit-review {
+    background-color: rgb(79, 70, 229);
+}
+
+.open-edit-review:hover {
+    background-color: rgb(67, 56, 202);
+}
 /* Admin Style */
 
 
