@@ -1,42 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const dialogue = document.querySelector(".add-review");
-    const openReview = document.querySelector(".open-add-review");
-    const closeReview = document.querySelector(".close-review");
-    const cancelReview = document.querySelector(".cancel-review");
+    const setupDialogue = (dialogueSelector, openSelector, closeSelector, cancelSelector) => {
+        const dialogue = document.querySelector(dialogueSelector);
+        const openButton = document.querySelector(openSelector);
+        const closeButton = document.querySelector(closeSelector);
+        const cancelButton = document.querySelector(cancelSelector);
 
-    const editDialogue = document.querySelector(".edit-review");
-    const openEditReview = document.querySelector(".open-edit-review");
-    const closeEditReview = document.querySelector(".close-edit-review");
-    const cancelEditReview = document.querySelector(".cancel-edit-review");
+        if (!dialogue || !openButton || !closeButton || !cancelButton) {
+            return;
+        }
 
-    if (dialogue && openReview && closeReview && cancelReview) {
-        openReview.addEventListener("click", () => {
+        const closeDialogue = () => {
+            dialogue.close();
+        };
+
+        openButton.addEventListener("click", () => {
             dialogue.showModal();
-
         });
 
-        closeReview.addEventListener("click", () => {
-            dialogue.close();
-        });
+        closeButton.addEventListener("click", closeDialogue);
+        cancelButton.addEventListener("click", closeDialogue);
+    };
 
-        cancelReview.addEventListener("click", () => {
-            dialogue.close();
-        });
-    }
-
-    if (editDialogue && openEditReview && closeEditReview && cancelEditReview) {
-        openEditReview.addEventListener("click", () => {
-            editDialogue.showModal();
-
-        });
-
-        closeEditReview.addEventListener("click", () => {
-            editDialogue.close();
-        });
-
-        cancelEditReview.addEventListener("click", () => {
-            editDialogue.close();
-        });
-    }
-
+    setupDialogue(".add-review", ".open-add-review", ".close-review", ".cancel-review");
+    setupDialogue(".edit-review", ".open-edit-review", ".close-edit-review", ".cancel-edit-review");
+    setupDialogue(".add-rate", ".open-add-rating", ".close-rate", ".cancel-rate");
 });

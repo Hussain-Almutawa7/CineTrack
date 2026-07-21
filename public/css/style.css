@@ -311,7 +311,8 @@ body {
 
 /* Review Style */
 .add-review,
-.edit-review {
+.edit-review,
+.add-rate {
     width: 90%;
     max-width: 700px;
     background-color: rgb(38, 49, 65);
@@ -321,7 +322,8 @@ body {
 }
 
 .add-review::backdrop,
-.edit-review::backdrop {
+.edit-review::backdrop,
+.add-rate::backdrop {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -362,7 +364,8 @@ body {
 }
 
 .cancel-review,
-.cancel-edit-review {
+.cancel-edit-review,
+.cancel-rate {
     color: white;
     font: inherit;
     font-weight: bold;
@@ -375,7 +378,8 @@ body {
 
 
 .close-review,
-.close-edit-review {
+.close-edit-review,
+.close-rate {
     color: white;
     font-weight: bold;
     background-color: rgb(51, 65, 85);
@@ -390,7 +394,9 @@ body {
 .cancel-review:hover,
 .close-review:hover,
 .cancel-edit-review:hover,
-.close-edit-review:hover {
+.close-edit-review:hover,
+.cancel-rate:hover,
+.close-rate:hover {
     background-color: rgb(71, 85, 105);
 }
 

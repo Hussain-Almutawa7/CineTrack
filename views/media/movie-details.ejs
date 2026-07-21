@@ -17,7 +17,7 @@
                     </p>
 
                     <div class="media-info">
-                        <span>⭐ Future Rate</span>
+                        <span>⭐ <%= avgRating %></span>
                         <span>
                             <%= movie.release_date.slice(0, 4) || "Not available" %>
                         </span>
@@ -44,7 +44,12 @@
                             <button class="primary-button">Add to Watchlist</button>
 
                             <div class="secondary-button">
-                                <button>Rate Movie</button>
+                                <% if(userRating) {%>
+                                    <button><%= userRating %></button>
+                                <% } else { %>
+                                    <button class="open-add-rating">Rate Movie</button>
+                                <% } %>
+
                                 <% if(reviews.some(review => review.user.equals(user.id))) {%>
                                     <button class="open-add-review" disabled>Reviewed &#10004;</button>
                                 <% } else { %>
@@ -69,6 +74,21 @@
                     <div class="form-review-buttons">
                         <button class="cancel-review" type="button">Cancel</button>
                         <button class="primary-button submit-review" type="submit">Submit Review</button>
+                    </div>
+                </form>
+            </dialog>
+
+            <dialog class="add-rate">
+                <form action="/movies/<%= movie.id %>/rating" method="POST">
+                    <div class="review-form-header">
+                        <h2>Add Rate</h2>
+                        <button class="close-rate" type="button">X</button>
+                    </div>
+                    <!-- Here the stars will be added -->
+
+                    <div class="form-review-buttons">
+                        <button class="cancel-rate" type="button">Cancel</button>
+                        <button class="primary-button submit-rate" type="submit">Submit Review</button>
                     </div>
                 </form>
             </dialog>
