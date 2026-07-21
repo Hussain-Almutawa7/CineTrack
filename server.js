@@ -25,6 +25,7 @@ const homeCtrl = require("./controllers/home-controller.js");
 const movieCtrl = require("./controllers/movie-controller.js");
 const reviewCtrl = require("./controllers/review-controller.js");
 const rateCtrl = require("./controllers/rate-controller.js");
+const watchlistCtrl = require("./controllers/watchlist-controller.js");
 
 const app = express();
 
@@ -55,12 +56,10 @@ app.get("/auth/sign-in", authCtrl.showSignInForm);
 app.post("/auth/sign-in", authCtrl.signIn);
 app.delete("/auth/sign-out", authCtrl.signOut);
 
-app.get("/dashboard", isSignedIn, authCtrl.dashboard);
-
-// HOME ROUTES
+// HOME ROUTE
 app.get("/", homeCtrl.home)
 
-// MOVIE ROUTES
+// MOVIE DETAILS ROUTE
 app.get("/movies/:mediaId", movieCtrl.movieDetails);
 
 // REVIEW ROUTES
@@ -71,6 +70,11 @@ app.put("/movies/:mediaId/reviews/:reviewId", isSignedIn, reviewCtrl.editReview)
 // RATING ROUTES
 app.post("/movies/:mediaId/rating", isSignedIn, rateCtrl.saveRating("movie"));
 app.delete("/movies/:mediaId/rating/:ratingId", isSignedIn, rateCtrl.deleteRating);
+
+// WATCHLIST ROUTES
+app.get("/watchlist", isSignedIn, watchlistCtrl.showWatchlist);
+app.post("/watchlist/:mediaType/:mediaId", isSignedIn, watchlistCtrl.addToWatchlist);
+app.delete("/watchlist/:mediaType/:mediaId", isSignedIn, watchlistCtrl.removeFromWatchList);
 
 const startServer = async () => {
     try {

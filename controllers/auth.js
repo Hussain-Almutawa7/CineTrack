@@ -90,15 +90,10 @@ const signOut = (req, res) => {
     });
 };
 
-const dashboard = (req, res) => {
-    res.render("dashboard.ejs");
-};
-
 module.exports = {
     showSignUpForm,
     signUp,
     showSignInForm,
     signIn,
     signOut,
-    dashboard,
 };
