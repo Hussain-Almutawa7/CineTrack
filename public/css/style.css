@@ -402,7 +402,7 @@ body {
 
 .no-reviews,
 .specific-review {
-    background-color: rgba(51, 61, 75, 0.7);
+    background-color: rgba(51, 61, 75, 0.5);
     color: lightgrey;
     padding: 20px;
     width: 100%;
@@ -410,6 +410,7 @@ body {
     text-align: center;
     margin-bottom: 0 auto;
     margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .specific-review {

@@ -100,10 +100,10 @@
                 
                         <% if(user && review.user.equals(user.id)) {%>
                             <div class="specific-review-buttons">
-                                <button class="open-edit-review">Edit Review</button>
+                                <button class="open-edit-review">Edit</button>
                                 <form action="/movies/<%= movie.id %>/reviews/<%= review.id %>?_method=DELETE"
                                     method="POST">
-                                    <button type="submit" class="delete-review">Delete Review</button>
+                                    <button type="submit" class="delete-review">Delete</button>
                                 </form>
                             </div>
                             <dialog class="edit-review">
