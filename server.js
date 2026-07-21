@@ -24,6 +24,7 @@ const authCtrl = require("./controllers/auth.js");
 const homeCtrl = require("./controllers/home-controller.js");
 const movieCtrl = require("./controllers/movie-controller.js");
 const reviewCtrl = require("./controllers/review-controller.js");
+const rateCtrl = require("./controllers/rate-controller.js");
 
 const app = express();
 
@@ -66,6 +67,10 @@ app.get("/movies/:movieId", movieCtrl.movieDetails);
 app.post("/movies/:movieId/reviews", isSignedIn, reviewCtrl.create);
 app.delete("/movies/:movieId/reviews/:reviewId", isSignedIn, reviewCtrl.deleteReview);
 app.put("/movies/:movieId/reviews/:reviewId", isSignedIn, reviewCtrl.editReview);
+
+// RATING ROUTES
+app.post("/movies/:movieId/rating", isSignedIn, rateCtrl.saveRating);
+app.delete("/movies/:movieId/rating", isSignedIn, rateCtrl.deleteRating);
 
 const startServer = async () => {
     try {
