@@ -61,16 +61,16 @@ app.get("/dashboard", isSignedIn, authCtrl.dashboard);
 app.get("/", homeCtrl.home)
 
 // MOVIE ROUTES
-app.get("/movies/:movieId", movieCtrl.movieDetails);
+app.get("/movies/:mediaId", movieCtrl.movieDetails);
 
 // REVIEW ROUTES
-app.post("/movies/:movieId/reviews", isSignedIn, reviewCtrl.create);
-app.delete("/movies/:movieId/reviews/:reviewId", isSignedIn, reviewCtrl.deleteReview);
-app.put("/movies/:movieId/reviews/:reviewId", isSignedIn, reviewCtrl.editReview);
+app.post("/movies/:mediaId/reviews", isSignedIn, reviewCtrl.createReview("movie"));
+app.delete("/movies/:mediaId/reviews/:reviewId", isSignedIn, reviewCtrl.deleteReview);
+app.put("/movies/:mediaId/reviews/:reviewId", isSignedIn, reviewCtrl.editReview);
 
 // RATING ROUTES
-app.post("/movies/:movieId/rating", isSignedIn, rateCtrl.saveRating);
-app.delete("/movies/:movieId/rating", isSignedIn, rateCtrl.deleteRating);
+app.post("/movies/:mediaId/rating", isSignedIn, rateCtrl.saveRating("movie"));
+app.delete("/movies/:mediaId/rating", isSignedIn, rateCtrl.deleteRating);
 
 const startServer = async () => {
     try {

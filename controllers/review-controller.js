@@ -1,26 +1,28 @@
 const Media = require("../models/media");
 const Review = require("../models/review");
 
-const create = async (req, res) => {
-    let media = await Media.findOne({
-        tmdbId: Number(req.params.movieId),
-        mediaType: "movie",
-    });
-
-    if (!media) {
-        media = await Media.create({
-            tmdbId: Number(req.params.movieId),
-            mediaType: "movie"
+const createReview = mediaType => {
+    return async (req, res) => {
+        let media = await Media.findOne({
+            tmdbId: Number(req.params.mediaId),
+            mediaType: "movie",
         });
+
+        if (!media) {
+            media = await Media.create({
+                tmdbId: Number(req.params.mediaId),
+                mediaType: "movie"
+            });
+        }
+
+        await Review.create({
+            user: req.session.user.id,
+            media: media._id,
+            comment: req.body.comment,
+        });
+
+        res.redirect(`/movies/${req.params.mediaId}`)
     }
-
-    await Review.create({
-        user: req.session.user.id,
-        media: media._id,
-        comment: req.body.comment,
-    });
-
-    res.redirect(`/movies/${req.params.movieId}`)
 }
 
 const deleteReview = async (req, res) => {
@@ -29,7 +31,7 @@ const deleteReview = async (req, res) => {
         user: req.session.user.id,
     }); // I changed since it is safer to protect the server since ejs protect only what the user can see
 
-    res.redirect(`/movies/${req.params.movieId}`)
+    res.redirect(`/movies/${req.params.mediaId}`)
 }
 
 const editReview = async (req, res) => {
@@ -42,12 +44,12 @@ const editReview = async (req, res) => {
             comment: req.body.comment
         }
     );
-    
-    res.redirect(`/movies/${req.params.movieId}`)
+
+    res.redirect(`/movies/${req.params.mediaId}`)
 }
 
 module.exports = {
-    create,
+    createReview,
     deleteReview,
     editReview,
 }
