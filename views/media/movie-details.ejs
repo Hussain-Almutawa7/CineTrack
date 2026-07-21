@@ -31,7 +31,7 @@
                             <span class="genre-style">
                                 <%= genre.name %>
                             </span>
-                            <% }) %>
+                        <% }) %>
                     </div>
 
                     <h2>Overview</h2>
@@ -45,16 +45,14 @@
 
                             <div class="secondary-button">
                                 <button>Rate Movie</button>
-                                <% reviews.forEach(review=> { %>
-                                    <% if(review.user.equals(user.id)) {%>
-                                        <button class="open-add-review" disabled>Reviewed &#10004;</button>
-                                        <% } else { %>
-                                            <button class="open-add-review">Add Review</button>
-                                            <% } %>
-                                                <% }) %>
+                                <% if(reviews.some(review => review.user.equals(user.id))) {%>
+                                    <button class="open-add-review" disabled>Reviewed &#10004;</button>
+                                <% } else { %>
+                                        <button class="open-add-review">Add Review</button>
+                                <% } %>
                             </div>
                         </div>
-                        <% } %>
+                    <% } %>
                 </div>
             </div>
         </section>
