@@ -18,7 +18,9 @@
 
                     <div class="media-info">
                         <% if(avgRating) { %>
-                            <span>⭐ <%= avgRating %></span>
+                            <span>
+                                ⭐ <%= avgRating %>/10 . <%= rating %> <%= rating === 1 ? "rating" : "ratings" %>
+                            </span>
                         <% } else { %>
                             <span>⭐ Not Yet Rated</span>
                         <% } %>
@@ -50,6 +52,7 @@
                             <div class="secondary-button">
                                 <% if(userRating) {%>
                                     <button class="open-add-rating">Your Rating: <%= userRating.rating %>/10</button>
+                                    
                                     <form action="/movies/<%= movie.id %>/rating/<%= userRating.id %>?_method=DELETE" method="POST">
                                         <button type="submit">Delete Rating</button>
                                     </form>
@@ -129,7 +132,7 @@
                                 <strong>
                                     <%= review.user.username %>
                                 </strong>
-                                <p><%= review.user.createdAt.toLocaleDateString() %></p>
+                                <p><%= review.createdAt.toLocaleDateString() %></p>
                             </div>
                         </div>
                 
