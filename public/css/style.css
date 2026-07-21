@@ -316,6 +316,7 @@ body {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
+    gap: 10px;
 }
 
 .star-rating input {
@@ -329,8 +330,19 @@ body {
     transition: 0.15s;
 }
 
-.star-rating label:hover {
+.star-rating label:hover,
+.star-rating label:hover~label,
+.star-rating input:checked~label {
     color: goldenrod;
+}
+
+.star-rating label:active {
+    transform: scale(0.9);
+}
+
+.rating-info {
+    color: gray;
+    margin-bottom: 40px;
 }
 
 /* Review Style */

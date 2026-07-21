@@ -17,7 +17,11 @@
                     </p>
 
                     <div class="media-info">
-                        <span>⭐ <%= avgRating %></span>
+                        <% if(avgRating) { %>
+                            <span>⭐ <%= avgRating %></span>
+                        <% } else { %>
+                            <span>⭐ Not Yet Rated</span>
+                        <% } %>
                         <span>
                             <%= movie.release_date.slice(0, 4) || "Not available" %>
                         </span>
@@ -45,8 +49,7 @@
 
                             <div class="secondary-button">
                                 <% if(userRating) {%>
-                                    <button><%= userRating.rating %>/10</button>
-                                    <button>Edit Rating</button>
+                                    <button class="open-add-rating">Your Rating: <%= userRating.rating %>/10</button>
                                 <% } else { %>
                                     <button class="open-add-rating">Rate Movie</button>
                                 <% } %>
@@ -82,14 +85,14 @@
             <dialog class="add-rate">
                 <form action="/movies/<%= movie.id %>/rating" method="POST">
                     <div class="review-form-header">
-                        <h2>Add Rate</h2>
+                        <h2><%= userRating? "Edit Rating" : "Add Rating" %></h2>
                         <button class="close-rate" type="button">X</button>
                     </div>
-                    <!-- Here the stars will be added -->
+
                      <div class="star-container">
                         <div class="star-rating">
                             <% for(let i = 10; i >= 1; i--) { %>
-                                <input type="radio" name="rating" id="rating-<%= i %>" value="<%= i %>" required>
+                                <input type="radio" name="rating" id="rating-<%= i %>" value="<%= i %>" <%= userRating && userRating.rating === i ? "checked" : "" %>  required>
                                 <label for="rating-<%= i %>">&#9733;</label>
                             <% } %>
                         </div>
@@ -98,7 +101,7 @@
 
                     <div class="form-review-buttons">
                         <button class="cancel-rate" type="button">Cancel</button>
-                        <button class="primary-button submit-rate" type="submit">Submit Rating</button>
+                        <button class="primary-button submit-rate" type="submit"><%= userRating? "Update Rating" : "Submit Rating" %></button>
                     </div>
                 </form>
             </dialog>

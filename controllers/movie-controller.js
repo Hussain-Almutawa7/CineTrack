@@ -34,13 +34,15 @@ const movieDetails = async (req, res) => {
                 });
             }
 
-            let totalRating = 0;
+            if (ratings.length > 0) {
+                let totalRating = 0;
 
-            ratings.forEach(rate => {
-                totalRating += rate.rating;
-            });
+                ratings.forEach(rate => {
+                    totalRating += rate.rating;
+                });
 
-            avgRating = totalRating / ratings.length;
+                avgRating = (totalRating / ratings.length).toFixed(1);
+            }
         }
 
         res.render("media/movie-details.ejs", {
