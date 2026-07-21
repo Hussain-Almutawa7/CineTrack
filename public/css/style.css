@@ -308,6 +308,30 @@ body {
 }
 
 /* Rate Style */
+.star-container {
+    text-align: center;
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    color: gray;
+    font-size: 40px;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.star-rating label:hover {
+    color: goldenrod;
+}
 
 /* Review Style */
 .add-review,

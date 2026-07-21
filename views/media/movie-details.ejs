@@ -87,15 +87,18 @@
                     </div>
                     <!-- Here the stars will be added -->
                      <div class="star-container">
-                        <% for(let i = 10; i >= 1; i--) { %>
-                            <input type="radio" name="rating" id="rating" value="<%= i %>">
-                            <label for="rating">&#9733;</label>
-                        <% } %>
+                        <div class="star-rating">
+                            <% for(let i = 10; i >= 1; i--) { %>
+                                <input type="radio" name="rating" id="rating-<%= i %>" value="<%= i %>" required>
+                                <label for="rating-<%= i %>">&#9733;</label>
+                            <% } %>
+                        </div>
+                        <p class="rating-info">Choose Rating from 1 to 10</p>
                      </div>
 
                     <div class="form-review-buttons">
                         <button class="cancel-rate" type="button">Cancel</button>
-                        <button class="primary-button submit-rate" type="submit">Submit Review</button>
+                        <button class="primary-button submit-rate" type="submit">Submit Rating</button>
                     </div>
                 </form>
             </dialog>
