@@ -106,28 +106,26 @@
                                     <button type="submit" class="delete-review">Delete Review</button>
                                 </form>
                             </div>
+                            <dialog class="edit-review">
+                                <form action="/movies/<%= movie.id %>/reviews/<%= review.id %>?_method=PUT"
+                                    method="POST">
+                                    <div class="review-form-header">
+                                        <h2>Edit Review</h2>
+                                        <button class="close-edit-review" type="button">X</button>
+                                    </div>
+                                    <textarea name="comment" id="comment" required><%= review.comment %></textarea>
+
+                                    <div class="form-review-buttons">
+                                        <button class="cancel-edit-review" type="button">Cancel</button>
+                                        <button class="primary-button submit-review" type="submit">Submit Review</button>
+                                    </div>
+                                </form>
+                            </dialog>
                         <% } %>
                     </div>
-                    <p>
-                        <%= review.comment %>
-                    </p>
-            </div>
-                        <dialog class="edit-review">
-                            <form action="/movies/<%= movie.id %>/reviews/<%= review.id %>?_method=PUT"
-                                method="POST">
-                                <div class="review-form-header">
-                                    <h2>Edit Review</h2>
-                                    <button class="close-edit-review" type="button">X</button>
-                                </div>
-                                <textarea name="comment" id="comment" required><%= review.comment %></textarea>
-
-                                <div class="form-review-buttons">
-                                    <button class="cancel-edit-review" type="button">Cancel</button>
-                                    <button class="primary-button submit-review" type="submit">Submit Review</button>
-                                </div>
-                            </form>
-                        </dialog>
-                    <% }) %>
+                    <p class="review-comment"><%= review.comment %></p>
+                </div>         
+            <% }) %>
         </section>
 
     </main>

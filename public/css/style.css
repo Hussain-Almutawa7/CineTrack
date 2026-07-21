@@ -395,7 +395,7 @@ body {
 }
 
 .display-review {
-    max-width: 740px;
+    max-width: 940px;
     padding: 20px;
     margin: 0 auto;
 }
@@ -477,6 +477,10 @@ strong {
     font-weight: bold;
     font-size: 16px;
     text-align: center;
+}
+
+.review-comment {
+    text-wrap: balance;
 }
 
 /* Admin Style */
