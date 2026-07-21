@@ -16,11 +16,21 @@ const saveRating = mediaType => {
             });
         }
 
-        await Rating.create({
-            user: req.session.user.id,
+        const existingRting = await Rating.findOne({
             media: media._id,
-            rating: 10
+            user: req.session.user.id,
         });
+
+        if (existingRting) {
+            existingRting.rating = Number(req.body.rating);
+            await existingRting.save();
+        } else {
+            await Rating.create({
+                user: req.session.user.id,
+                media: media._id,
+                rating: Number(req.body.rating),
+            });
+        }
 
         res.redirect(`/movies/${req.params.mediaId}`)
     }
