@@ -80,12 +80,22 @@
                 <p class="no-reviews">No Reviews yet</p>
             <%  } %>
 
-            <div class="specific-review">
-                <% reviews.forEach(review=> { %>
+            <% reviews.forEach(review=> { %>
+                <div class="specific-review">
                     <div class="specific-review-items">
-                        <strong>
-                            <%= review.user.username %>
-                        </strong>
+                        <div class="profile-container">
+                            <div class="profile-picture">
+                                <span class="review-profile">
+                                    <%= review.user.username.charAt(0).toUpperCase() %>
+                                </span>
+                            </div>
+                            <div class="profile-info">
+                                <strong>
+                                    <%= review.user.username %>
+                                </strong>
+                                <p><%= review.user.createdAt.toLocaleDateString() %></p>
+                            </div>
+                        </div>
                 
                 
                         <% if(user && review.user.equals(user.id)) {%>
@@ -95,7 +105,6 @@
                                     method="POST">
                                     <button type="submit" class="delete-review">Delete Review</button>
                                 </form>
-                                
                             </div>
                         <% } %>
                     </div>
