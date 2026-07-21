@@ -75,6 +75,10 @@
         <% } %>
 
         <section class="display-review">
+            <% if(reviews.length === 0) { %>
+                <p>No Reviews yet</p>
+            <%  } %>
+
             <% reviews.forEach(review=> { %>
                 <strong>
                     <%= review.user.username %>
@@ -83,7 +87,7 @@
                     <%= review.comment %>
                 </p>
 
-                <% if(review.user.equals(user.id)) {%>
+                <% if(user && review.user.equals(user.id)) {%>
                     <form action="/movies/<%= movie.id %>/reviews/<%= review.id %>?_method=DELETE"
                         method="POST">
                         <button type="submit">Delete Review</button>
