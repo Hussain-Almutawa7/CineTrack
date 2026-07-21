@@ -285,7 +285,7 @@ body {
 }
 
 .secondary-button button {
-    width: 37%;
+    width: 47%;
     border: 1px solid white;
     background-color: transparent;
     padding: 10px 15px;
@@ -297,8 +297,23 @@ body {
     transition: 0.15s;
 }
 
+.secondary-button form {
+    width: 47%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.secondary-button form button {
+    width: 100%;
+    background-color: darkred;
+}
+
 .secondary-button button:hover {
     background-color: rgba(255, 255, 255, 0.08);
+}
+
+.secondary-button form button:hover {
+    background-color: rgb(140, 0, 0);
 }
 
 @media(max-width: 800px) {
@@ -478,6 +493,7 @@ body {
     color: white;
     border-radius: 5px;
     cursor: pointer;
+    font-family: inherit;
     transition: 0.15s;
 }
 
