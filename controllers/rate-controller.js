@@ -37,7 +37,12 @@ const saveRating = mediaType => {
 }
 
 const deleteRating = async (req, res) => {
+    await Rating.findByIdAndDelete({
+        _id: req.params.ratingId,
+        user: req.session.user.id
+    });
 
+    res.redirect(`/movies/${req.params.mediaId}`)
 }
 
 module.exports = {

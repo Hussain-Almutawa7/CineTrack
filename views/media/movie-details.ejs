@@ -50,6 +50,9 @@
                             <div class="secondary-button">
                                 <% if(userRating) {%>
                                     <button class="open-add-rating">Your Rating: <%= userRating.rating %>/10</button>
+                                    <form action="/movies/<%= movie.id %>/rating/<%= userRating.id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="delete-rating">Delete Rating</button>
+                                    </form>
                                 <% } else { %>
                                     <button class="open-add-rating">Rate Movie</button>
                                 <% } %>

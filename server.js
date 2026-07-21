@@ -70,7 +70,7 @@ app.put("/movies/:mediaId/reviews/:reviewId", isSignedIn, reviewCtrl.editReview)
 
 // RATING ROUTES
 app.post("/movies/:mediaId/rating", isSignedIn, rateCtrl.saveRating("movie"));
-app.delete("/movies/:mediaId/rating", isSignedIn, rateCtrl.deleteRating);
+app.delete("/movies/:mediaId/rating/:ratingId", isSignedIn, rateCtrl.deleteRating);
 
 const startServer = async () => {
     try {
