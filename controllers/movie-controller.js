@@ -45,11 +45,11 @@ const mediaDetails = async (req, res) => {
             }
         }
 
-        const mediaTye = {
+        const mediaType = {
             id: tmdbMedia.id,
-            title: req.params.mediaTye === "movie" ? tmdbMedia.title : tmdbMedia.name,
+            title: req.params.mediaType === "movie" ? tmdbMedia.title : tmdbMedia.name,
             releaseDate: req.params.mediaType === "movie" ? tmdbMedia.release_date : tmdbMedia.first_air_date,
-            runtime: req.params.mediaTye === "movie" ? tmdbMedia.runtime : tmdbMedia.episode_run_time[0],
+            runtime: req.params.mediaType === "movie" ? tmdbMedia.runtime : tmdbMedia.episode_run_time[0],
             posterPath: tmdbMedia.poster_path,
             overview: tmdbMedia.overview,
             backdropPath: tmdbMedia.backdrop_path,
@@ -58,7 +58,7 @@ const mediaDetails = async (req, res) => {
         }
 
         res.render("media/movie-details.ejs", {
-            tmdbMedia : mediaTye,
+            tmdbMedia : mediaType,
             reviews,
             avgRating,
             userRating,
