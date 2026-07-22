@@ -7,11 +7,11 @@ const showWatchlist = async (req, res) => {
 
     const watchlistDetails = await Promise.all(
         user.watchlist.map(async media => {
-            const details = await tmdbService.getMediaDetails(media.mediaType, media.mediaId)
+            const details = await tmdbService.getMediaDetails(media.mediaType, media.tmdbId)
 
             return {
                 id: details.id,
-                mediaType: details.mediaType,
+                mediaType: media.mediaType,
                 title: media.mediaType === "movie" ? details.title : details.name,
                 posterPath: details.poster_path
             };

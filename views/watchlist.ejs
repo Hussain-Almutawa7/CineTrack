@@ -1,12 +1,12 @@
 ﻿<%- include("./partials/nav.ejs") %>
 
-    <main>
+    <main class="popular-media">
         <h1>Welcome to the watchlist, <%= user.username %></h1>
-        <div class="movie-container">
+        <div class="watchlist-container">
             <% watchlist.forEach(movie => { %>
                 <a href="/<%= movie.mediaType %>/<%= movie.id %>">
                     <div class="movie-items">
-                        <img src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+                        <img src="https://image.tmdb.org/t/p/w200<%= movie.posterPath%>" alt="<%= movie.title %>">
                         <div class="movie-text">
                             <span><%= movie.title %></span>
                         </div>

@@ -171,17 +171,22 @@ body {
 .movie-container {
     display: flex;
     width: 100%;
-    gap: 10px;
+    gap: 12px;
     overflow-x: auto;
     overflow-y: hidden;
-    /* scrollbar-width: none; */
-    scrollbar-width: thin;
-
+    scrollbar-width: none;
 }
 
-.movie-container a {
+.movie-container a, .watchlist-container a {
     text-decoration: none;
     color: rgb(243, 244, 246);
+}
+
+.watchlist-container {
+    display: flex;
+    width: 100%;
+    gap: 18px;
+    flex-wrap: wrap;
 }
 
 .movie-items {
