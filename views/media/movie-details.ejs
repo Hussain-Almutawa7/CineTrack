@@ -28,7 +28,11 @@
                             <%= tmdbMedia.releaseDate.slice(0, 4) || "Not available" %>
                         </span>
                         <span>
-                            <%= tmdbMedia.runtime %> min
+                            <% if(tmdbMedia.runtime) {%>
+                                <%= tmdbMedia.runtime %> min
+                            <% } else { %>
+                                N/A
+                            <% } %>    
                         </span>
                     </div>
 
