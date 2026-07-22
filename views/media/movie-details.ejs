@@ -59,7 +59,7 @@
                                         <button type="submit">Delete Rating</button>
                                     </form>
                                 <% } else { %>
-                                    <button class="open-add-rating">Rate Movie</button>
+                                    <button class="open-add-rating"><%= mediaType === "movie"? "Rate Movie" : "Rate Series" %></button>
                                 <% } %>
 
                                 <% if(reviews.some(review => review.user.equals(user.id))) {%>
