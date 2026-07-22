@@ -22,10 +22,35 @@ body {
 }
 
 .site-nav-brand {
-    color: rgb(243, 244, 246);
-    font-size: 1.1rem;
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     text-decoration: none;
+}
+
+.site-nav-brand img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.site-nav-name {
+    font-size: 1.25rem;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+}
+
+.cine-text {
+    background: linear-gradient(90deg,
+            rgb(245, 190, 65),
+            rgb(255, 230, 150));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.track-text {
+    color: rgb(243, 244, 246);
 }
 
 .site-nav-links {
@@ -177,7 +202,8 @@ body {
     scrollbar-width: none;
 }
 
-.movie-container a, .watchlist-container a {
+.movie-container a,
+.watchlist-container a {
     text-decoration: none;
     color: rgb(243, 244, 246);
 }

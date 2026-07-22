@@ -13,14 +13,12 @@ const mediaDetails = async (req, res) => {
             mediaType: req.params.mediaType,
         });
 
-        const currentUser = await User.findById(req.session.user.id)
-
         let reviews = [];
 
         let ratings = [];
         let avgRating = 0;
         let userRating = null;
-        
+
         let isInWatchlist = false;
 
         if (media) {
@@ -33,6 +31,7 @@ const mediaDetails = async (req, res) => {
             });
 
             if (req.session.user) {
+                const currentUser = await User.findById(req.session.user.id)
                 userRating = await Rating.findOne({
                     media: media._id,
                     user: req.session.user.id,
