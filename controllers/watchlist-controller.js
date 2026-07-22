@@ -36,7 +36,17 @@ const addToWatchlist = async (req, res) => {
 }
 
 const removeFromWatchList = async (req, res) => {
+    const user = await User.findById(req.session.user.id);
+    
+    let media = await Media.findOne({
+        tmdbId: Number(req.params.mediaId),
+        mediaType: req.params.mediaType,
+    });
 
+    user.watchlist.pull(media._id);
+    await user.save();
+
+    res.redirect(`/${req.params.mediaType}/${req.params.mediaId}`)
 }
 
 module.exports = {

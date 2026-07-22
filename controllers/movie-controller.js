@@ -2,6 +2,7 @@ const tmdbService = require("../services/tmdb");
 const Media = require("../models/media");
 const Review = require("../models/review");
 const Rating = require("../models/rating");
+const User = require("../models/user");
 
 const mediaDetails = async (req, res) => {
     try {
@@ -10,13 +11,17 @@ const mediaDetails = async (req, res) => {
         const media = await Media.findOne({
             tmdbId: Number(req.params.mediaId),
             mediaType: req.params.mediaType,
-        })
+        });
+
+        const currentUser = await User.findById(req.session.user.id)
 
         let reviews = [];
 
         let ratings = [];
         let avgRating = 0;
         let userRating = null;
+        
+        let isInWatchlist = false;
 
         if (media) {
             reviews = await Review.find({
@@ -32,6 +37,8 @@ const mediaDetails = async (req, res) => {
                     media: media._id,
                     user: req.session.user.id,
                 });
+
+                isInWatchlist = await currentUser.watchlist.some(mediaId => mediaId.equals(media._id));
             }
 
             if (ratings.length > 0) {
@@ -43,6 +50,8 @@ const mediaDetails = async (req, res) => {
 
                 avgRating = (totalRating / ratings.length).toFixed(1);
             }
+
+
         }
 
         const mediaType = {
@@ -58,12 +67,14 @@ const mediaDetails = async (req, res) => {
         }
 
         res.render("media/movie-details.ejs", {
-            tmdbMedia : mediaType,
+            tmdbMedia: mediaType,
             reviews,
             avgRating,
             userRating,
             rating: ratings.length,
             mediaType: req.params.mediaType,
+            mediaId: req.params.mediaId,
+            isInWatchlist,
         });
 
     } catch (error) {

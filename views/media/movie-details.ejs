@@ -51,10 +51,15 @@
 
                     <% if(user) { %>
                         <div class="media-actions">
-                            <form action="/watchlist/<%= mediaType %>/<%= tmdbMedia.id %>" method="POST">
-                                <button class="primary-button">Add to Watchlist</button>
-                            </form>
-
+                            <% if(isInWatchlist) { %>
+                                <form action="/watchlist/<%= mediaType %>/<%= tmdbMedia.id %>?_method=DELETE" method="POST">
+                                    <button class="primary-button">Remove from Watchlist</button>
+                                </form>
+                            <% } else { %>
+                                <form action="/watchlist/<%= mediaType %>/<%= tmdbMedia.id %>" method="POST">
+                                    <button class="primary-button">Add to Watchlist</button>
+                                </form>
+                            <% } %>
                             <div class="secondary-button">
                                 <% if(userRating) {%>
                                     <button class="open-add-rating">Your Rating: <%= userRating.rating %>/10</button>
