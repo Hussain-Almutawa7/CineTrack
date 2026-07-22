@@ -224,8 +224,8 @@ body {
 
 .movie-container {
     display: flex;
-    width: 100%;
-    gap: 12px;
+
+    gap: 18px;
     overflow-x: auto;
     overflow-y: hidden;
     scrollbar-width: none;
@@ -238,15 +238,13 @@ body {
 }
 
 .movie-items {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 15px;
-    gap: 10px;
     border-radius: 10px;
-    background-color: rgb(11, 21, 35);
+    background-color: rgb(20, 30, 45);
+    border: 1px solid rgb(51, 65, 85);
     cursor: pointer;
-    height: 380px;
+    transition: 0.2s;
+    width: 180px;
+    overflow: hidden;
 }
 
 .home-poster {
