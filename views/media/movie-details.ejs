@@ -2,18 +2,18 @@
 
     <main>
         <section class="media-container" style="
-            background-image:url('https://image.tmdb.org/t/p/original<%= movie.backdrop_path %>');
+            background-image:url('https://image.tmdb.org/t/p/original<%= tmdbMedia.backdropPath %>');
             ">
             <div class="media-details-container">
-                <img class="media-details-poster" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>"
-                    alt="<%= movie.title %> ">
+                <img class="media-details-poster" src="https://image.tmdb.org/t/p/w500<%= tmdbMedia.posterPath %>"
+                    alt="<%= tmdbMedia.title %> ">
 
                 <div class="media-details-content">
                     <h1>
-                        <%= movie.title %>
+                        <%= tmdbMedia.title %>
                     </h1>
                     <p class="tagline">
-                        <%= movie.tagline %>
+                        <%= tmdbMedia.tagline %>
                     </p>
 
                     <div class="media-info">
@@ -25,15 +25,15 @@
                             <span>⭐ Not Yet Rated</span>
                         <% } %>
                         <span>
-                            <%= movie.release_date.slice(0, 4) || "Not available" %>
+                            <%= tmdbMedia.releaseDate.slice(0, 4) || "Not available" %>
                         </span>
                         <span>
-                            <%= movie.runtime %> min
+                            <%= tmdbMedia.runtime %> min
                         </span>
                     </div>
 
                     <div class="genre">
-                        <% movie.genres.forEach(genre=> { %>
+                        <% tmdbMedia.genres.forEach(genre=> { %>
                             <span class="genre-style">
                                 <%= genre.name %>
                             </span>
@@ -42,12 +42,12 @@
 
                     <h2>Overview</h2>
                     <p class="overview">
-                        <%= movie.overview %>
+                        <%= tmdbMedia.overview %>
                     </p>
 
                     <% if(user) { %>
                         <div class="media-actions">
-                            <form action="/watchlist/<%= mediaType %>/<%= movie.id %>" method="POST">
+                            <form action="/watchlist/<%= mediaType %>/<%= tmdbMedia.id %>" method="POST">
                                 <button class="primary-button">Add to Watchlist</button>
                             </form>
 
@@ -55,7 +55,7 @@
                                 <% if(userRating) {%>
                                     <button class="open-add-rating">Your Rating: <%= userRating.rating %>/10</button>
                                     
-                                    <form action="/<%= mediaType %>/<%= movie.id %>/rating/<%= userRating.id %>?_method=DELETE" method="POST">
+                                    <form action="/<%= mediaType %>/<%= tmdbMedia.id %>/rating/<%= userRating.id %>?_method=DELETE" method="POST">
                                         <button type="submit">Delete Rating</button>
                                     </form>
                                 <% } else { %>
@@ -76,7 +76,7 @@
 
         <% if(user) {%>
             <dialog class="add-review">
-                <form action="/<%= mediaType %>/<%= movie.id %>/reviews" method="POST">
+                <form action="/<%= mediaType %>/<%= tmdbMedia.id %>/reviews" method="POST">
                     <div class="review-form-header">
                         <h2>Add Review</h2>
                         <button class="close-review" type="button">X</button>
@@ -91,7 +91,7 @@
             </dialog>
 
             <dialog class="add-rate">
-                <form action="/<%= mediaType %>/<%= movie.id %>/rating" method="POST">
+                <form action="/<%= mediaType %>/<%= tmdbMedia.id %>/rating" method="POST">
                     <div class="review-form-header">
                         <h2><%= userRating? "Edit Rating" : "Add Rating" %></h2>
                         <button class="close-rate" type="button">X</button>
@@ -141,13 +141,13 @@
                         <% if(user && review.user.equals(user.id)) {%>
                             <div class="specific-review-buttons">
                                 <button class="open-edit-review">Edit</button>
-                                <form action="/<%= mediaType %>/<%= movie.id %>/reviews/<%= review.id %>?_method=DELETE"
+                                <form action="/<%= mediaType %>/<%= tmdbMedia.id %>/reviews/<%= review.id %>?_method=DELETE"
                                     method="POST">
                                     <button type="submit" class="delete-review">Delete</button>
                                 </form>
                             </div>
                             <dialog class="edit-review">
-                                <form action="/<%= mediaType %>/<%= movie.id %>/reviews/<%= review.id %>?_method=PUT"
+                                <form action="/<%= mediaType %>/<%= tmdbMedia.id %>/reviews/<%= review.id %>?_method=PUT"
                                     method="POST">
                                     <div class="review-form-header">
                                         <h2>Edit Review</h2>
