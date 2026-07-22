@@ -11,7 +11,7 @@ const saveRating = async (req, res) => {
     if (!media) {
         media = await Media.create({
             tmdbId: Number(req.params.mediaId),
-            mediaType: mediaType
+            mediaType: req.params.mediaType,
         });
     }
 

@@ -9,10 +9,10 @@ const home = async (req, res) => {
         const trendingTvs = await tmdbService.getTrendingMedia("tv");
 
         res.render("home.ejs", {
-            movies: movieInfo,
-            tvs: tvInfo,
-            trendingTvs,
-            trendingMovies,
+            movies: movieInfo.results,
+            tvs: tvInfo.results,
+            trendingTvs: trendingTvs.results,
+            trendingMovies: trendingMovies.results,
         })
     } catch (error) {
         console.log("Fetch movie error: " + error.message);

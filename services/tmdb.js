@@ -16,7 +16,7 @@ const getPopularMedia = async (mediaType) => {
 
     const data = await response.json();
 
-    return data.results;
+    return data;
 }
 
 const getMediaDetails = async (mediaType, id) => {
@@ -32,13 +32,13 @@ const getMediaDetails = async (mediaType, id) => {
 const getTrendingMedia = async (mediaType) => {
     if (mediaType !== "movie" && mediaType !== "tv") throw new Error("Invalid media type");
 
-    const response = await fetch(`${TMDB_URL}/trending/${mediaType}`, tmdbOptions);
+    const response = await fetch(`${TMDB_URL}/trending/${mediaType}/week`, tmdbOptions);
 
     if (!response.ok) throw new Error(`Failed to fetch trending ${mediaType} from TMDB`);
 
     const data = await response.json();
 
-    return data.results;
+    return data;
 }
 
 module.exports = {
