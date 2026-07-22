@@ -21,7 +21,7 @@ const showBrowse = async (req, res) => {
     let totalPages = 1;
 
     if (searchTerm) {
-        const searchData = await tmdbService.searchMedia(searchTerm.page);
+        const searchData = await tmdbService.searchMedia(searchTerm, page);
 
         mediaResults = searchData.results.filter(media => {
             return media.media_type === "movie" || media.media_type === "tv"
@@ -37,7 +37,7 @@ const showBrowse = async (req, res) => {
         ]);
 
         const moviData = results[0];
-        const tvData = results[0];
+        const tvData = results[1];
 
         const movies = moviData.results.map(movie => {
             return normalizeMedia(movie, "movie");
@@ -53,7 +53,7 @@ const showBrowse = async (req, res) => {
             return secondMedia.popularity - firstMedia.popularity;
         });
 
-        totalPages = Math.min(moviData.totalPages, tvData.totalPages);
+        totalPages = Math.min(moviData.total_pages, tvData.total_pages);
     }
 
     res.render("browse.ejs", {
