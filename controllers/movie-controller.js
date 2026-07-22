@@ -3,13 +3,13 @@ const Media = require("../models/media");
 const Review = require("../models/review");
 const Rating = require("../models/rating");
 
-const movieDetails = async (req, res) => {
+const mediaDetails = async (req, res) => {
     try {
-        const movie = await tmdbService.getMovieDetails(req.params.mediaId);
+        const movie = await tmdbService.getMediaDetails(req.params.mediaId);
 
         const media = await Media.findOne({
             tmdbId: Number(req.params.mediaId),
-            mediaType: "movie",
+            mediaType: req.params.mediaType,
         })
 
         let reviews = [];
@@ -50,7 +50,8 @@ const movieDetails = async (req, res) => {
             reviews,
             avgRating,
             userRating,
-            rating: ratings.length
+            rating: ratings.length,
+            mediaType: req.params.mediaType,
         });
 
     } catch (error) {
@@ -59,5 +60,5 @@ const movieDetails = async (req, res) => {
 }
 
 module.exports = {
-    movieDetails,
+    mediaDetails,
 }

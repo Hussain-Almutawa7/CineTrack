@@ -60,16 +60,16 @@ app.delete("/auth/sign-out", authCtrl.signOut);
 app.get("/", homeCtrl.home)
 
 // MOVIE DETAILS ROUTE
-app.get("/movies/:mediaId", movieCtrl.movieDetails);
+app.get("/:mediaType/:mediaId", movieCtrl.mediaDetails);
 
 // REVIEW ROUTES
-app.post("/movies/:mediaId/reviews", isSignedIn, reviewCtrl.createReview("movie"));
-app.delete("/movies/:mediaId/reviews/:reviewId", isSignedIn, reviewCtrl.deleteReview);
-app.put("/movies/:mediaId/reviews/:reviewId", isSignedIn, reviewCtrl.editReview);
+app.post("/:mediaType/:mediaId/reviews", isSignedIn, reviewCtrl.createReview);
+app.delete("/:mediaType/:mediaId/reviews/:reviewId", isSignedIn, reviewCtrl.deleteReview);
+app.put("/:mediaType/:mediaId/reviews/:reviewId", isSignedIn, reviewCtrl.editReview);
 
 // RATING ROUTES
-app.post("/movies/:mediaId/rating", isSignedIn, rateCtrl.saveRating("movie"));
-app.delete("/movies/:mediaId/rating/:ratingId", isSignedIn, rateCtrl.deleteRating);
+app.post("/:mediaType/:mediaId/rating", isSignedIn, rateCtrl.saveRating);
+app.delete("/:mediaType/:mediaId/rating/:ratingId", isSignedIn, rateCtrl.deleteRating);
 
 // WATCHLIST ROUTES
 app.get("/watchlist", isSignedIn, watchlistCtrl.showWatchlist);

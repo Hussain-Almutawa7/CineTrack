@@ -31,8 +31,7 @@ const addToWatchlist = async (req, res) => {
         await user.save();
     }
 
-    res.redirect(`/movies/${req.params.mediaId}`)
-    // res.redirect(`/${req.params.mediaType}/${req.params.mediaId}`) I will make all the routes dynamic for better usability in the future
+    res.redirect(`/${req.params.mediaType}/${req.params.mediaId}`)
 }
 
 const removeFromWatchList = async (req, res) => {

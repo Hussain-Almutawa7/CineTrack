@@ -7,7 +7,7 @@ const tmdbOptions = {
     }
 };
 
-const getPopularMovies = async () => {
+const getPopularMedia = async () => {
     const response = await fetch(`${TMDB_URL}/movie/popular`, tmdbOptions);
 
     if (!response.ok) throw new Error("Failed to fetch popular movies from TMDB");
@@ -17,7 +17,7 @@ const getPopularMovies = async () => {
     return data;
 }
 
-const getMovieDetails = async (id) => {
+const getMediaDetails = async (id) => {
     const response = await fetch(`${TMDB_URL}/movie/${id}`, tmdbOptions);
 
     if (!response.ok) throw new Error("Failed to fetch movie details");
@@ -26,6 +26,6 @@ const getMovieDetails = async (id) => {
 }
 
 module.exports = {
-    getPopularMovies,
-    getMovieDetails,
+    getPopularMedia,
+    getMediaDetails,
 }
