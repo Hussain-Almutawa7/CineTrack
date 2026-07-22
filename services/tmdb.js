@@ -7,8 +7,10 @@ const tmdbOptions = {
     }
 };
 
-const getPopularMedia = async () => {
-    const response = await fetch(`${TMDB_URL}/movie/popular`, tmdbOptions);
+const getPopularMedia = async (mediaType) => {
+    if (mediaType !== "movie" && mediaType !== "tv") throw new Error("Invalid media type");
+
+    const response = await fetch(`${TMDB_URL}/${mediaType}/popular`, tmdbOptions);
 
     if (!response.ok) throw new Error("Failed to fetch popular movies from TMDB");
 
@@ -17,8 +19,10 @@ const getPopularMedia = async () => {
     return data;
 }
 
-const getMediaDetails = async (id) => {
-    const response = await fetch(`${TMDB_URL}/movie/${id}`, tmdbOptions);
+const getMediaDetails = async (mediaType, id) => {
+    if (mediaType !== "movie" && mediaType !== "tv") throw new Error("Invalid media type");
+
+    const response = await fetch(`${TMDB_URL}/${mediaType}/${id}`, tmdbOptions);
 
     if (!response.ok) throw new Error("Failed to fetch movie details");
 

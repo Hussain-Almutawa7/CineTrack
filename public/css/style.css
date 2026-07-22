@@ -164,6 +164,10 @@ body {
 }
 
 /* Home Page Style */
+.popular-media {
+    padding: 20px;
+}
+
 .movie-container {
     display: flex;
     width: 100%;

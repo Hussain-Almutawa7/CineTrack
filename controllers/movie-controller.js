@@ -5,7 +5,7 @@ const Rating = require("../models/rating");
 
 const mediaDetails = async (req, res) => {
     try {
-        const movie = await tmdbService.getMediaDetails(req.params.mediaId);
+        const movie = await tmdbService.getMediaDetails(req.params.mediaType, req.params.mediaId);
 
         const media = await Media.findOne({
             tmdbId: Number(req.params.mediaId),
