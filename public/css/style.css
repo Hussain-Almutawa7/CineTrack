@@ -188,7 +188,7 @@ body {
     text-decoration: underline;
 }
 
-/* Home and Watchlist Style */
+/* Home Style */
 .media-page {
     width: 100%;
     max-width: 1400px;
@@ -220,13 +220,6 @@ body {
     color: rgb(243, 244, 246);
 }
 
-.watchlist-container {
-    display: flex;
-    width: 100%;
-    gap: 18px;
-    flex-wrap: wrap;
-}
-
 .movie-items {
     display: flex;
     flex-direction: column;
@@ -250,6 +243,22 @@ body {
 .movie-text {
     display: flex;
     justify-content: space-between;
+}
+
+/* Watchlist Style */
+.watchlist-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.watchlist-container a {
+    width: 200px;
+}
+
+.watchlist-container .movie-items {
+    width: 100%;
+    height: 100%;
 }
 
 .empty-watchlist {
