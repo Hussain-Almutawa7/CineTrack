@@ -1,13 +1,19 @@
-﻿* {
+﻿@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap");
+
+* {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
     min-height: 100vh;
-    font-family: cursive;
+    font-family: "Inter", cursive;
     color: rgb(243, 244, 246);
-    background-color: rgb(31, 41, 55);
+    background-color: rgb(17, 24, 39);
+}
+
+h1, h2 {
+    font-family: "Oswald", cursive;
 }
 
 /* Shared Nav Style */
@@ -17,8 +23,8 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    background-color: rgb(31, 41, 55);
-    border-bottom: 1px solid rgb(41, 51, 65);
+    background-color: rgb(24, 34, 50);
+    border-bottom: 1px solid rgb(45, 55, 72);
 }
 
 .site-nav-brand {
@@ -41,9 +47,11 @@ body {
 }
 
 .cine-text {
-    background: linear-gradient(90deg,
-            rgb(245, 190, 65),
-            rgb(255, 230, 150));
+    background: linear-gradient(
+        90deg,
+        rgb(79, 70, 229),
+        rgb(165, 180, 252)
+    );
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -664,7 +672,7 @@ strong {
 .error-page h1 {
     margin: 0;
     font-size: 90px;
-    color: rgb(245, 190, 65);
+    color: rgb(150, 150, 250);
 }
 
 .error-page h2 {
