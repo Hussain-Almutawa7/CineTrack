@@ -41,8 +41,17 @@ const getTrendingMedia = async (mediaType) => {
     return data;
 }
 
+const searchMedia = async (searchTerm, page =1) => {
+    const response = await fetch(`${TMDB_URL}/search/multi?query=${encodeURIComponent(searchTerm)}`, tmdbOptions);
+
+    if (!response.ok) throw new Error(`Search Failed`);
+
+    return response.json();
+}
+
 module.exports = {
     getPopularMedia,
     getMediaDetails,
     getTrendingMedia,
+    searchMedia,
 }

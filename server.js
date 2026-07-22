@@ -23,6 +23,7 @@ const movieCtrl = require("./controllers/movie-controller.js");
 const reviewCtrl = require("./controllers/review-controller.js");
 const rateCtrl = require("./controllers/rate-controller.js");
 const watchlistCtrl = require("./controllers/watchlist-controller.js");
+const browseCtrl = require("./controllers/browse-controller.js");
 
 const app = express();
 
@@ -72,6 +73,9 @@ app.delete("/:mediaType/:mediaId/rating/:ratingId", isSignedIn, rateCtrl.deleteR
 app.get("/watchlist", isSignedIn, watchlistCtrl.showWatchlist);
 app.post("/watchlist/:mediaType/:mediaId", isSignedIn, watchlistCtrl.addToWatchlist);
 app.delete("/watchlist/:mediaType/:mediaId", isSignedIn, watchlistCtrl.removeFromWatchList);
+
+// BROWSE ROUTE
+app.get("/browse")
 
 // HANDLE ERROR ROUTE
 app.get("/*splat", (req, res) => {
