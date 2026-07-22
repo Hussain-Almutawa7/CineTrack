@@ -16,6 +16,12 @@ const getPopularMedia = async (mediaType) => {
 
     const data = await response.json();
 
+    const blockedIds = [204269, 233643];
+
+    data.results = data.results.filter(tv => {
+        return !blockedIds.includes(tv.id);
+    });
+
     return data;
 }
 
