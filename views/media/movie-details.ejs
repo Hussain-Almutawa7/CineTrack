@@ -47,7 +47,9 @@
 
                     <% if(user) { %>
                         <div class="media-actions">
-                            <button class="primary-button">Add to Watchlist</button>
+                            <form action="/watchlist/movie/<%= movie.id %>" method="POST">
+                                <button class="primary-button">Add to Watchlist</button>
+                            </form>
 
                             <div class="secondary-button">
                                 <% if(userRating) {%>
