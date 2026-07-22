@@ -75,7 +75,7 @@ app.post("/watchlist/:mediaType/:mediaId", isSignedIn, watchlistCtrl.addToWatchl
 app.delete("/watchlist/:mediaType/:mediaId", isSignedIn, watchlistCtrl.removeFromWatchList);
 
 // BROWSE ROUTE
-app.get("/browse")
+app.get("/browse", browseCtrl.showBrowse)
 
 // HANDLE ERROR ROUTE
 app.get("/*splat", (req, res) => {

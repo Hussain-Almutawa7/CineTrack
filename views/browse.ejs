@@ -1,6 +1,59 @@
 <%- include("./partials/nav.ejs") %>
-    <main>
-        <h1>Browse Page</h1>
+
+    <main class="media-page">
+        <header class="media-page-header">
+            <% if (searchTerm) { %>
+                <h1>Results for "<%= searchTerm %>"</h1>
+                <p>Movies and TV shows matching your search.</p>
+            <% } else { %>
+                <h1>Browse</h1>
+                <p>Discover movies and TV shows.</p>
+            <% } %>
+        </header>
+
+        <form class="site-nav-search" action="/browse" method="GET">
+            <input type="search" name="search" value="<%= searchTerm %>" placeholder="Search movies and TV shows">
+            <button class="primary-button" type="submit">Search</button>
+        </form>
+
+        <% if (mediaResults.length > 0) { %>
+            <div class="movie-container">
+                <% mediaResults.forEach(media => { %>
+                    <a href="/<%= media.mediaType %>/<%= media.id %>">
+                        <div class="movie-items">
+                            <img class="home-poster" src="https://image.tmdb.org/t/p/w300<%= media.posterPath %>" alt="<%= media.title %>">
+
+                            <div class="movie-text">
+                                <span><%= media.title %></span>
+                            </div>
+                        </div>
+                    </a>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <div>
+                <h2>No results found</h2>
+
+                <p>No movies or TV shows matched "<%= searchTerm %>".</p>
+
+                <a class="primary-button" href="/browse"> Clear Search</a>
+            </div>
+        <% } %>
+
+        <% if (totalPages > 1) { %>
+            <nav>
+                <% if (page > 1) { %>
+                    <a href="/browse?search=<%= encodedSearch %>&page=<%= page - 1 %>"> Previous</a>
+                <% } %>
+
+                <span>Page <%= page %> of <%= totalPages %></span>
+
+                <% if (page < totalPages) { %>
+                    <a href="/browse?search=<%= encodedSearch %>&page=<%= page + 1 %>">Next</a>
+                <% } %>
+            </nav>
+        <% } %>
     </main>
+
 </body>
 </html>

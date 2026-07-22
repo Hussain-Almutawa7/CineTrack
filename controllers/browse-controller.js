@@ -12,7 +12,7 @@ const normalizeMedia = (item, mediaType) => {
     };
 };
 
-const showBrowse = async (req, res, next) => {
+const showBrowse = async (req, res) => {
     const searchTerm = req.query.search?.trim() || "";
 
     let page = Number(req.query.page) || 1;
