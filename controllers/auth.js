@@ -18,7 +18,13 @@ const signUp = async (req, res) => {
     });
 
     if (userInDatabase) {
-        return res.send("Username or email is already taken");
+        return res.status(409).render("error.ejs", {
+            statusCode: 409,
+            title: "Account Already Exists",
+            message: "The username or email you entered is already being used.",
+            returnLink: "/auth/sign-up",
+            returnText: "Return to Sign Up",
+        });
     }
 
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -61,7 +67,13 @@ const signIn = async (req, res) => {
     });
 
     if (!userInDatabase) {
-        return res.send("Invalid username/email or password"); // I will change it later to a designed error page
+        return res.status(401).render("error.ejs", {
+            statusCode: 401,
+            title: "Sign In Failed",
+            message: "The username, email, or password you entered is incorrect.",
+            returnLink: "/auth/sign-in",
+            returnText: "Return to Sign In",
+        });
     }
 
     const validPassword = await bcrypt.compare(
@@ -70,7 +82,13 @@ const signIn = async (req, res) => {
     );
 
     if (!validPassword) {
-        return res.send("Invalid username/email or password"); // I will change it later to a designed error page
+        return res.status(401).render("error.ejs", {
+            statusCode: 401,
+            title: "Sign In Failed",
+            message: "The username, email, or password you entered is incorrect.",
+            returnLink: "/auth/sign-in",
+            returnText: "Return to Sign In",
+        });
     }
 
     req.session.user = {

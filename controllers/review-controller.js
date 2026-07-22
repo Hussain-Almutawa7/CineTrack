@@ -24,16 +24,16 @@ const createReview = async (req, res) => {
 }
 
 const deleteReview = async (req, res) => {
-    await Review.findByIdAndDelete({
+    await Review.findOneAndDelete({
         _id: req.params.reviewId,
         user: req.session.user.id,
-    }); // I changed since it is safer to protect the server since ejs protect only what the user can see
+    });
 
     res.redirect(`/${req.params.mediaType}/${req.params.mediaId}`)
 }
 
 const editReview = async (req, res) => {
-    await Review.findByIdAndUpdate(
+    await Review.findOneAndUpdate(
         {
             _id: req.params.reviewId,
             user: req.session.user.id

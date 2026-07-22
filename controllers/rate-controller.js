@@ -35,7 +35,7 @@ const saveRating = async (req, res) => {
 }
 
 const deleteRating = async (req, res) => {
-    await Rating.findByIdAndDelete({
+    await Rating.findOneAndDelete({
         _id: req.params.ratingId,
         user: req.session.user.id
     });

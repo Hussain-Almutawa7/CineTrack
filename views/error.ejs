@@ -1,0 +1,12 @@
+<%- include("./partials/nav.ejs") %>
+
+<main class="error-page">
+    <h1><%= statusCode %></h1>
+    <h2><%= title %></h2>
+    <p><%= message %></p>
+
+    <a href="<%= returnLink %>" class="primary-button"><%= returnText %></a>
+</main>
+
+</body>
+</html>

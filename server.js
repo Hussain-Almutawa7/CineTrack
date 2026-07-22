@@ -1,7 +1,4 @@
 ﻿const dns = require("node:dns");
-
-// DNS workaround for MongoDB Atlas.
-// Remove these two lines if your regular DNS works correctly.
 dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
 require("dotenv").config();
@@ -75,6 +72,17 @@ app.delete("/:mediaType/:mediaId/rating/:ratingId", isSignedIn, rateCtrl.deleteR
 app.get("/watchlist", isSignedIn, watchlistCtrl.showWatchlist);
 app.post("/watchlist/:mediaType/:mediaId", isSignedIn, watchlistCtrl.addToWatchlist);
 app.delete("/watchlist/:mediaType/:mediaId", isSignedIn, watchlistCtrl.removeFromWatchList);
+
+// HANDLE ERROR ROUTE
+app.get("/*splat", (req, res) => {
+    res.status(404).render("error.ejs", {
+        statusCode: 404,
+        title: "Page Not Found",
+        message: "The page you are looking for does not exist.",
+        returnLink: "/",
+        returnText: "Return Home",
+    });
+});
 
 const startServer = async () => {
     try {

@@ -582,7 +582,39 @@ strong {
     text-wrap: balance;
 }
 
-/* Admin Style */
+/* Error Style */
+.error-page {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.error-page h1 {
+    margin: 0;
+    font-size: 90px;
+    color: rgb(245, 190, 65);
+}
+
+.error-page h2 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.error-page p {
+    margin: 0 0 12px;
+    color: lightgrey;
+}
+
+.error-page a {
+    text-decoration: none;
+    max-width: 200px;
+}
 
 
 /* Mobile Repsonsive for some items if there is enough time */
