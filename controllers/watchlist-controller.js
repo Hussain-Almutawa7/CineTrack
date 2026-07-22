@@ -1,12 +1,25 @@
 const Media = require("../models/media");
 const User = require("../models/user");
+const tmdbService = require("../services/tmdb");
 
 const showWatchlist = async (req, res) => {
     const user = await User.findById(req.session.user.id).populate("watchlist");
 
+    const watchlistDetails = await Promise.all(
+        user.watchlist.map(async media => {
+            const details = await tmdbService.getMediaDetails(media.mediaType, media.mediaId)
+
+            return {
+                id: details.id,
+                mediaType: details.mediaType,
+                title: media.mediaType === "movie" ? details.title : details.name,
+                posterPath: details.poster_path
+            };
+        })
+    );
+
     res.render("watchlist.ejs", {
-        watchlist: user.watchlist,
-        mediaType: req.params.mediaType,
+        watchlist: watchlistDetails,
     });
 }
 
@@ -37,7 +50,7 @@ const addToWatchlist = async (req, res) => {
 
 const removeFromWatchList = async (req, res) => {
     const user = await User.findById(req.session.user.id);
-    
+
     let media = await Media.findOne({
         tmdbId: Number(req.params.mediaId),
         mediaType: req.params.mediaType,
