@@ -248,16 +248,17 @@ body {
 }
 
 .home-poster {
-    height: 85%;
-}
-
-.movie-items img {
-    border-radius: 5px;
+    display: block;
+    width: 100%;
+    object-fit: cover;
 }
 
 .movie-text {
+    min-height: 50px;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    padding-left: 12px;
+    font-weight: bold;
 }
 
 /* Watchlist Style */
