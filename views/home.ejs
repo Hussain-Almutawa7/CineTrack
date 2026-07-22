@@ -7,7 +7,7 @@
                 <% if(index <= 11) {%>
                     <a href="/movie/<%= movie.id %>">
                         <div class="movie-items">
-                            <img src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+                            <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
                             <div class="movie-text">
                                 <span><%= movie.title %></span>
                             </div>
@@ -23,9 +23,9 @@
                 <% if(index <= 11) {%>
                     <a href="/tv/<%= movie.id %>">
                         <div class="movie-items">
-                            <img src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+                            <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
                             <div class="movie-text">
-                                <span><%= movie.title %></span>
+                                <span><%= movie.name %></span>
                             </div>
                         </div>
                     </a>
@@ -39,7 +39,7 @@
                 <% if(index <= 11) {%>
                     <a href="/movie/<%= movie.id %>">
                         <div class="movie-items">
-                            <img src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+                            <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
                             <div class="movie-text">
                                 <span><%= movie.title %></span>
                             </div>
@@ -55,9 +55,9 @@
                 <% if(index <= 11) {%>
                     <a href="/tv/<%= movie.id %>">
                         <div class="movie-items">
-                            <img src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+                            <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
                             <div class="movie-text">
-                                <span><%= movie.title %></span>
+                                <span><%= movie.name %></span>
                             </div>
                         </div>
                     </a>
