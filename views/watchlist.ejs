@@ -2,7 +2,18 @@
 
     <main>
         <h1>Welcome to the watchlist, <%= user.username %></h1>
-        <p>This page is only available to signed-in users.</p>
+        <div class="movie-container">
+            <% watchlist.forEach(movie => { %>
+                <a href="/<%= mediaType %>/<%= movie.id %>">
+                    <div class="movie-items">
+                        <img src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+                        <div class="movie-text">
+                            <span><%= movie.title %></span>
+                        </div>
+                    </div>
+                </a>
+            <%  }) %>
+        </div>
     </main>
     </body>
 

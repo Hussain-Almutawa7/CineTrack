@@ -5,7 +5,8 @@ const showWatchlist = async (req, res) => {
     const user = await User.findById(req.session.user.id).populate("watchlist");
 
     res.render("watchlist.ejs", {
-        watchlist: user.watchlist
+        watchlist: user.watchlist,
+        mediaType: req.params.mediaType,
     });
 }
 
