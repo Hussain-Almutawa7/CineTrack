@@ -219,16 +219,16 @@ body {
     margin-bottom: 18px;
     padding-left: 12px;
     font-size: 24px;
-    border-left: 4px solid rgb(79, 70, 229)
+    border-left: 4px solid rgb(79, 70, 229);
 }
 
 .movie-container {
     display: flex;
-
     gap: 18px;
     overflow-x: auto;
     overflow-y: hidden;
     scrollbar-width: none;
+    padding-top: 5px;
 }
 
 .movie-container a,
@@ -245,6 +245,12 @@ body {
     transition: 0.2s;
     width: 180px;
     overflow: hidden;
+}
+
+.movie-items:hover {
+    border-color: rgb(79, 70, 229);;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    margin-top: -5px;
 }
 
 .home-poster {
