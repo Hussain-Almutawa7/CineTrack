@@ -268,11 +268,12 @@ h1, h2 {
 }
 
 .movie-text {
-    min-height: 50px;
+    min-height: 65px;
     display: flex;
     align-items: center;
-    padding-left: 12px;
+    padding: 12px;
     font-weight: bold;
+    font-size: 14px;
 }
 
 /* Watchlist Style */
