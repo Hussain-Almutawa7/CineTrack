@@ -12,7 +12,8 @@ body {
     background-color: rgb(17, 24, 39);
 }
 
-h1, h2 {
+h1,
+h2 {
     font-family: "Oswald", cursive;
 }
 
@@ -47,11 +48,9 @@ h1, h2 {
 }
 
 .cine-text {
-    background: linear-gradient(
-        90deg,
-        rgb(79, 70, 229),
-        rgb(165, 180, 252)
-    );
+    background: linear-gradient(90deg,
+            rgb(79, 70, 229),
+            rgb(165, 180, 252));
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -88,6 +87,34 @@ h1, h2 {
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+
+.site-nav-search {
+    display: flex;
+    width: 500px;
+    gap: 8px;;
+}
+
+.site-nav-search input {
+    flex: 1;
+    font-family: inherit;
+    font-size: 16px;
+    color: white;
+    background-color: rgba(51, 61, 75, 0.5);
+    border: 1px solid rgb(75, 85, 99);
+    border-radius: 8px;
+    outline: none;
+    padding: 10px;
+    transition: 0.15s;
+}
+
+.site-nav-search input:focus {
+    border-color: rgb(79, 70, 229);
+}
+
+.site-nav-search .primary-button {
+    width: auto;
+    padding: 9px 18px;
 }
 
 /* Authuntecation Style */
@@ -256,7 +283,8 @@ h1, h2 {
 }
 
 .movie-items:hover {
-    border-color: rgb(79, 70, 229);;
+    border-color: rgb(79, 70, 229);
+    ;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     margin-top: -5px;
 }
