@@ -1,20 +1,33 @@
 ﻿<%- include("./partials/nav.ejs") %>
 
-    <main class="popular-media">
-        <h1>Welcome to your Watchlist, <%= user.username %></h1>
+<main class="media-page">
+    <header class="media-page-header">
+        <h1><%= user.username %>'s Watchlist</h1>
+        <p>Your saved movies and TV shows.</p>
+    </header>
+
+    <% if (watchlist.length > 0) { %>
         <div class="watchlist-container">
-            <% watchlist.forEach(movie => { %>
-                <a href="/<%= movie.mediaType %>/<%= movie.id %>">
+            <% watchlist.forEach(media => { %>
+                <a href="/<%= media.mediaType %>/<%= media.id %>">
                     <div class="movie-items">
-                        <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.posterPath%>" alt="<%= movie.title %>">
+                        <img class="home-poster" src="https://image.tmdb.org/t/p/w300<%= media.posterPath %>" alt="<%= media.title %>">
+
                         <div class="movie-text">
-                            <span><%= movie.title %></span>
+                            <span><%= media.title %></span>
                         </div>
                     </div>
                 </a>
-            <%  }) %>
+            <% }) %>
         </div>
-    </main>
-    </body>
+    <% } else { %>
+        <div class="empty-watchlist">
+            <h2>Your watchlist is empty</h2>
+            <p>Browse movies and TV shows and save something to watch later.</p>
+            <a class="primary-button" href="/">Return Home</a>
+        </div>
+    <% } %>
+</main>
 
-    </html>
+</body>
+</html>

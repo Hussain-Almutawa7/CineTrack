@@ -188,9 +188,21 @@ body {
     text-decoration: underline;
 }
 
-/* Home Page Style */
-.popular-media {
-    padding: 20px;
+/* Home and Watchlist Style */
+.media-page {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 35px 24px 60px;
+}
+
+.media-page-header {
+    margin-bottom: 35px;
+}
+
+.media-page-header p {
+    margin: 0;
+    color: rgb(156, 163, 175);
 }
 
 .movie-container {
@@ -238,6 +250,29 @@ body {
 .movie-text {
     display: flex;
     justify-content: space-between;
+}
+
+.empty-watchlist {
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 40px 25px;
+    text-align: center;
+    background-color: rgb(38, 49, 65);
+    border: 1px solid rgb(75, 85, 99);
+    border-radius: 10px;
+}
+
+.empty-watchlist h2 {
+    margin-top: 0;
+}
+
+.empty-watchlist p {
+    margin-bottom: 25px;
+    color: rgb(156, 163, 175);
+}
+
+.empty-watchlist .primary-button {
+    text-decoration: none;
 }
 
 /* Movie Details Style */
