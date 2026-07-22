@@ -200,9 +200,26 @@ body {
     margin-bottom: 35px;
 }
 
+.media-page-header h1 {
+    margin: 0;
+    font-size: 36px;
+    color: rgb(243, 244, 246);
+}
+
 .media-page-header p {
     margin: 0;
     color: rgb(156, 163, 175);
+}
+
+.media-section {
+    margin-bottom: 45px;
+}
+
+.media-section h2 {
+    margin-bottom: 18px;
+    padding-left: 12px;
+    font-size: 24px;
+    border-left: 4px solid rgb(79, 70, 229)
 }
 
 .movie-container {
