@@ -1,69 +1,86 @@
 ﻿<%- include("./partials/nav.ejs") %>
 
     <main class="media-page">
-        <h1>Popular Movies</h1>
-        <div class="movie-container">
-            <% movies.forEach((movie, index) => { %>
-                <% if(index <= 11) {%>
-                    <a href="/movie/<%= movie.id %>">
-                        <div class="movie-items">
-                            <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
-                            <div class="movie-text">
-                                <span><%= movie.title %></span>
-                            </div>
-                        </div>
-                    </a>
-                <% } %>
-            <%  }) %>
-        </div>
+        <header class="media-page-header">
+            <h1>Discover</h1>
+            <p>Explore popular and trending movies and TV shows.</p>
+        </header>
+        
+        <section class="media-section">
+            <h2>Popular Movies</h2>
+            <div class="movie-container">
+                <% movies.forEach((movie, index) => { %>
+                    <% if(index <= 11) {%>
+                        <a href="/movie/<%= movie.id %>">
+                            <div class="movie-items">
+                                <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
 
-        <h1>Popular Tv Shows</h1>
-        <div class="movie-container">
-            <% tvs.forEach((movie, index) => { %>
-                <% if(index <= 11) {%>
-                    <a href="/tv/<%= movie.id %>">
-                        <div class="movie-items">
-                            <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
-                            <div class="movie-text">
-                                <span><%= movie.name %></span>
+                                <div class="movie-text">
+                                    <span><%= movie.title %></span>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                <% } %>
-            <%  }) %>
-        </div>
+                        </a>
+                    <% } %>
+                <%  }) %>
+            </div>
+        </section>
 
-        <h1>Trending Movies</h1>
-        <div class="movie-container">
-            <% trendingMovies.forEach((movie, index) => { %>
-                <% if(index <= 11) {%>
-                    <a href="/movie/<%= movie.id %>">
-                        <div class="movie-items">
-                            <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
-                            <div class="movie-text">
-                                <span><%= movie.title %></span>
+        <section class="media-section">
+            <h2>Popular Tv Shows</h2>
+            <div class="movie-container">
+                <% tvs.forEach((movie, index) => { %>
+                    <% if(index <= 11) {%>
+                        <a href="/tv/<%= movie.id %>">
+                            <div class="movie-items">
+                                <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+                                
+                                <div class="movie-text">
+                                    <span><%= movie.title %></span>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                <% } %>
-            <%  }) %>
-        </div>
+                        </a>
+                    <% } %>
+                <%  }) %>
+            </div>
+        </section>
 
-        <h1>Trending Tv Shows</h1>
-        <div class="movie-container">
-            <% trendingTvs.forEach((movie, index) => { %>
-                <% if(index <= 11) {%>
-                    <a href="/tv/<%= movie.id %>">
-                        <div class="movie-items">
-                            <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
-                            <div class="movie-text">
-                                <span><%= movie.name %></span>
+        <section class="media-section">
+            <h2>Trending Movies</h2>
+            <div class="movie-container">
+                <% trendingMovies.forEach((movie, index) => { %>
+                    <% if(index <= 11) {%>
+                        <a href="/movie/<%= movie.id %>">
+                            <div class="movie-items">
+                                <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+
+                                <div class="movie-text">
+                                    <span><%= movie.title %></span>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                <% } %>
-            <%  }) %>
-        </div>
+                        </a>
+                    <% } %>
+                <%  }) %>
+            </div>
+        </section>
+
+        <section class="media-section">
+            <h2>Trending Tv Shows</h2>
+            <div class="movie-container">
+                <% trendingTvs.forEach((movie, index) => { %>
+                    <% if(index <= 11) {%>
+                        <a href="/tv/<%= movie.id %>">
+                            <div class="movie-items">
+                                <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+                                
+                                <div class="movie-text">
+                                    <span><%= movie.title %></span>
+                                </div>
+                            </div>
+                        </a>
+                    <% } %>
+                <%  }) %>
+            </div>
+        </section>
         
     </main>
 </body>
