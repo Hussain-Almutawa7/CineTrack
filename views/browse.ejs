@@ -41,15 +41,15 @@
         <% } %>
 
         <% if (totalPages > 1) { %>
-            <nav>
+            <nav class="pagination">
                 <% if (page > 1) { %>
-                    <a href="/browse?search=<%= encodedSearch %>&page=<%= page - 1 %>"> Previous</a>
+                    <a class="primary-button"  href="/browse?search=<%= encodedSearch %>&page=<%= page - 1 %>"> Previous</a>
                 <% } %>
 
                 <span>Page <%= page %> of <%= totalPages %></span>
 
                 <% if (page < totalPages) { %>
-                    <a href="/browse?search=<%= encodedSearch %>&page=<%= page + 1 %>">Next</a>
+                    <a class="primary-button" href="/browse?search=<%= encodedSearch %>&page=<%= page + 1 %>">Next</a>
                 <% } %>
             </nav>
         <% } %>

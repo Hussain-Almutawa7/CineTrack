@@ -696,6 +696,24 @@ strong {
     flex-wrap: wrap;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 45px;
+    width: 8%;
+}
+
+.pagination a {
+    text-decoration: none;
+    text-align: center;
+}
+
+.pagination span {
+    color: rgb(156, 163, 175);
+}
+
 /* Error Style */
 .error-page {
     min-height: calc(100vh - 80px);
