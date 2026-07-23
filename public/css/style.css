@@ -89,13 +89,15 @@ h2 {
     cursor: pointer;
 }
 
-.site-nav-search {
+.site-nav-search,
+.browse-search {
     display: flex;
     width: 500px;
-    gap: 8px;;
+    gap: 8px;
 }
 
-.site-nav-search input {
+.site-nav-search input,
+.browse-search input {
     flex: 1;
     font-family: inherit;
     font-size: 16px;
@@ -108,11 +110,13 @@ h2 {
     transition: 0.15s;
 }
 
-.site-nav-search input:focus {
+.site-nav-search input:focus,
+.browse-search input:focus {
     border-color: rgb(79, 70, 229);
 }
 
-.site-nav-search .primary-button {
+.site-nav-search .primary-button,
+.browse-search .primary-button {
     width: auto;
     padding: 9px 18px;
 }
@@ -683,6 +687,13 @@ strong {
 
 .review-comment {
     text-wrap: balance;
+}
+
+/* Browse styling */
+.browse-search {
+    padding-bottom: 30px;
+    width: 95%;
+    flex-wrap: wrap;
 }
 
 /* Error Style */
