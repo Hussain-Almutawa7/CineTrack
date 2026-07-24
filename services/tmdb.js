@@ -48,24 +48,22 @@ const getTrendingMedia = async (mediaType) => {
 }
 
 const searchMedia = async (searchTerm, page = 1) => {
-    const response = await fetch(`${TMDB_URL}/search/multi?query=${encodeURIComponent(searchTerm)}`, tmdbOptions);
+    const response = await fetch(`${TMDB_URL}/search/multi?query=${encodeURIComponent(searchTerm)}&page=${page}`, tmdbOptions);
 
-    if (!response.ok) throw new Error(`Search Failed`);
+    if (!response.ok) throw new Error("Search failed");
 
     return response.json();
-}
+};
 
 const discoverMedia = async (mediaType, page = 1) => {
     if (mediaType !== "movie" && mediaType !== "tv") throw new Error("Invalid media type");
 
-    const response = await fetch(`${TMDB_URL}/discover/${mediaType}?include_adult=false&language=en-US&${page}&sort_by=popularity.desc`, tmdbOptions);
+    const response = await fetch(`${TMDB_URL}/discover/${mediaType}?include_adult=false&language=en-US&page=${page}&sort_by=popularity.desc`, tmdbOptions);
 
-    if (!response.ok) {
-        throw new Error(`Unable to discover ${mediaType}`);
-    }
+    if (!response.ok) throw new Error(`Unable to discover ${mediaType}`);
 
     return response.json();
-}
+};
 
 module.exports = {
     getPopularMedia,
