@@ -15,6 +15,7 @@ const path = require("path");
 // Custom MiddleWare
 const passUserToView = require("./middleware/pass-user-to-view.js");
 const isSignedIn = require("./middleware/is-signed-in.js");
+const isAdmin = require("./middleware/is-admin.js");
 
 // Controllers
 const authCtrl = require("./controllers/auth.js");
@@ -24,6 +25,7 @@ const reviewCtrl = require("./controllers/review-controller.js");
 const rateCtrl = require("./controllers/rate-controller.js");
 const watchlistCtrl = require("./controllers/watchlist-controller.js");
 const browseCtrl = require("./controllers/browse-controller.js");
+const adminCtrl = require("./controllers/admin-controller.js");
 
 const app = express();
 
@@ -75,7 +77,14 @@ app.post("/watchlist/:mediaType/:mediaId", isSignedIn, watchlistCtrl.addToWatchl
 app.delete("/watchlist/:mediaType/:mediaId", isSignedIn, watchlistCtrl.removeFromWatchList);
 
 // BROWSE ROUTE
-app.get("/browse", browseCtrl.showBrowse)
+app.get("/browse", browseCtrl.showBrowse);
+
+// ADMIN ROUTES
+app.get("/admin/users", isSignedIn, isAdmin, adminCtrl.showUsers);
+app.get("/admin/users", isSignedIn, isAdmin, adminCtrl.showUser);
+app.post("/admin/users", isSignedIn, isAdmin, adminCtrl.addUser)
+app.put("/admin/users/:userId", isSignedIn, isAdmin, adminCtrl.editUser);
+app.delete("/admin/users/:userId", isSignedIn, isAdmin, adminCtrl.deleteUser);
 
 // HANDLE ERROR ROUTE
 app.get("/*splat", (req, res) => {
