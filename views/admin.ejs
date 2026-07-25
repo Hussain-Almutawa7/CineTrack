@@ -1,8 +1,8 @@
 <%- include("./partials/nav.ejs") %>
     <main>
-        <% users.forEach(user => { %>
-            <p><%= user.email %></p>
-        <% }) %>
+        <div class="admin-layout">
+            <%- include("./partials/admin-sidebar.ejs") %>
+        </div>
     </main>
 
 </body>
