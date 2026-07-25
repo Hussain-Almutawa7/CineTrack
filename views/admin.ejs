@@ -1,6 +1,8 @@
 <%- include("./partials/nav.ejs") %>
     <main>
-        <h1>Hello This is admin page</h1>
+        <% users.forEach(user => { %>
+            <p><%= user.email %></p>
+        <% }) %>
     </main>
 
 </body>

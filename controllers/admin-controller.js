@@ -2,7 +2,9 @@ const Review = require("../models/review");
 const User = require("../models/user");
 
 const showUsers = async (req, res) => {
+    const users = await User.find();
 
+    res.render("admin.ejs", { users });
 }
 
 const showUser = async (req, res) => {

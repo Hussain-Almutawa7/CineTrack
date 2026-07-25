@@ -59,9 +59,6 @@ app.delete("/auth/sign-out", authCtrl.signOut);
 // HOME ROUTE
 app.get("/", homeCtrl.home)
 
-// MOVIE DETAILS ROUTE
-app.get("/:mediaType/:mediaId", movieCtrl.mediaDetails);
-
 // REVIEW ROUTES
 app.post("/:mediaType/:mediaId/reviews", isSignedIn, reviewCtrl.createReview);
 app.delete("/:mediaType/:mediaId/reviews/:reviewId", isSignedIn, reviewCtrl.deleteReview);
@@ -81,10 +78,13 @@ app.get("/browse", browseCtrl.showBrowse);
 
 // ADMIN ROUTES
 app.get("/admin/users", isSignedIn, isAdmin, adminCtrl.showUsers);
-app.get("/admin/users", isSignedIn, isAdmin, adminCtrl.showUser);
 app.post("/admin/users", isSignedIn, isAdmin, adminCtrl.addUser)
+app.get("/admin/users/:userId", isSignedIn, isAdmin, adminCtrl.showUser);
 app.put("/admin/users/:userId", isSignedIn, isAdmin, adminCtrl.editUser);
 app.delete("/admin/users/:userId", isSignedIn, isAdmin, adminCtrl.deleteUser);
+
+// MOVIE DETAILS ROUTE
+app.get("/:mediaType/:mediaId", movieCtrl.mediaDetails);
 
 // HANDLE ERROR ROUTE
 app.get("/*splat", (req, res) => {

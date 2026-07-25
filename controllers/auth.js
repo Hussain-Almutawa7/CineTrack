@@ -39,7 +39,7 @@ const signUp = async (req, res) => {
 
     req.session.user = {
         username: user.username,
-        id: user._id, // Maybe I will add .toString() if I didn't like the comparsion with .equals()
+        id: user._id,
         role: user.role,
     };
 
