@@ -1,0 +1,105 @@
+<%- include("../partials/nav.ejs") %>
+
+    <main class="admin-layout">
+        <%- include("../partials/admin-sidebar.ejs") %>
+
+        <section class="manage-users">
+            <div class="manage-users-header">
+                <div>
+                    <h1>Manage Users</h1>
+                    <p>View and manage CineTrack user accounts.</p>
+                </div>
+
+                <button class="primary-button open-add-user">Create User</button>
+
+                <dialog class="add-user"> 
+                    <form action="/admin/users" method="POST">
+                        <div class="review-form-header">
+                            <h2>Add User</h2>
+                            <button class="close-add-user" type="button">X</button>
+                        </div>
+                        
+                        <!-- Here will be the input fields I will add later -->
+
+                        <div class="form-review-buttons">
+                            <button class="cancel-user" type="button">Cancel</button>
+                            <button class="primary-button submit-user" type="submit">Create User</button>
+                        </div>
+                    </form>
+                </dialog>
+            </div>
+
+            <div class="users-table-wrapper">
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% if (users.length === 0) { %>
+                            <tr>
+                                <td colspan="4" class="no-users">
+                                    No users found.
+                                </td>
+                            </tr>
+                        <% } else { %>
+                            <% users.forEach(user => { %>
+                                <tr>
+                                    <td>
+                                        <div class="user-identity">
+                                            <span class="user-profile"><%= user.username.charAt(0).toUpperCase() %></span>
+
+                                            <span class="user-name"><%= user.username %></span>
+                                        </div>
+                                    </td>
+
+                                    <td><%= user.email %></td>
+
+                                    <td>
+                                        <span class="user-role"><%= user.role %></span>
+                                    </td>
+
+                                    <td>
+                                        <div class="user-actions">
+                                            <a href="/admin/users/<%= user._id %>" class="action-button view-user">View</a>
+
+                                            <button class="action-button edit-user open-edit-user">Edit</button>
+
+                                            <dialog class="edit-user-pop"> 
+                                                <form action="/admin/users/<%= user._id %>?_method=PUT" method="POST">
+                                                    <div class="review-form-header">
+                                                        <h2>Edit User</h2>
+                                                        <button class="close-edit-user" type="button">X</button>
+                                                    </div>
+                                                    
+                                                    <!-- Here will be the input fields I will add later -->
+
+                                                    <div class="form-review-buttons">
+                                                        <button class="cancel-edit-user" type="button">Cancel</button>
+                                                        <button class="primary-button submit-user" type="submit">Update User</button>
+                                                    </div>
+                                                </form>
+                                            </dialog>
+
+                                            <form action="/admin/users/<%= user._id %>?_method=DELETE" method="POST">
+                                                <button type="submit" class="action-button delete-user">Delete</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="/scripts/handle-dialog.js"></script>
+</body>
+</html>

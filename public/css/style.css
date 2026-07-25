@@ -525,7 +525,9 @@ h2 {
 /* Review Style */
 .add-review,
 .edit-review,
-.add-rate {
+.add-rate,
+.add-user,
+.edit-user-pop {
     width: 90%;
     max-width: 700px;
     background-color: rgb(38, 49, 65);
@@ -536,7 +538,9 @@ h2 {
 
 .add-review::backdrop,
 .edit-review::backdrop,
-.add-rate::backdrop {
+.add-rate::backdrop,
+.add-user::backdrop,
+.edit-user::backdrop {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -578,7 +582,9 @@ h2 {
 
 .cancel-review,
 .cancel-edit-review,
-.cancel-rate {
+.cancel-rate,
+.cancel-user,
+.cancel-edit-user {
     color: white;
     font: inherit;
     font-weight: bold;
@@ -592,7 +598,9 @@ h2 {
 
 .close-review,
 .close-edit-review,
-.close-rate {
+.close-rate,
+.close-add-user,
+.close-edit-user {
     color: white;
     font-weight: bold;
     background-color: rgb(51, 65, 85);
@@ -609,7 +617,11 @@ h2 {
 .cancel-edit-review:hover,
 .close-edit-review:hover,
 .cancel-rate:hover,
-.close-rate:hover {
+.close-rate:hover,
+.cancel-user:hover,
+.close-add-user:hover,
+.cancel-edit-user:hover,
+.close-edit-user:hover {
     background-color: rgb(71, 85, 105);
 }
 
@@ -730,6 +742,150 @@ strong {
     color: rgb(156, 163, 175);
     text-align: center;
     white-space: nowrap;
+}
+
+/* Admin styles */
+.manage-users {
+    flex: 1;
+    min-width: 0;
+    padding: 35px;
+}
+
+.manage-users-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.manage-users-header h1 {
+    margin-bottom: 5px;
+    color: white;
+}
+
+.manage-users-header p {
+    margin: 0;
+    color: rgb(174, 185, 204);
+}
+
+.open-add-user {
+    width: auto;
+}
+
+.users-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid rgb(43, 57, 81);
+    border-radius: 10px;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgb(24, 34, 53);
+    color: #d5dbea;
+}
+
+.users-table th,
+.users-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgb(43, 57, 81);
+}
+
+.users-table th {
+    color: white;
+    background-color: rgb(32, 44, 66);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.users-table tbody tr:hover {
+    background-color: rgb(29, 41, 64);
+}
+
+.users-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.user-identity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: #5c46e8;
+    color: white;
+    font-weight: bold;
+}
+
+.user-name {
+    color: white;
+    font-weight: 600;
+}
+
+.user-role {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background-color: rgba(92, 70, 232, 0.2);
+    color: #a99cff;
+    text-transform: capitalize;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-actions form {
+    margin: 0;
+}
+
+.action-button {
+    display: inline-block;
+    padding: 7px 12px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font: inherit;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.view-user {
+    background-color: rgb(37, 99, 168);
+}
+
+.edit-user {
+    background-color: rgb(92, 70, 232);
+}
+
+.delete-user {
+    background-color: darkred;
+}
+
+.view-user:hover,
+.edit-user:hover,
+.delete-user:hover {
+    opacity: 0.7;
+}
+
+.no-users {
+    text-align: center !important;
+    color: rgb(174, 185, 204);
 }
 
 /* Error Style */

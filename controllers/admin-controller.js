@@ -4,7 +4,7 @@ const User = require("../models/user");
 const showUsers = async (req, res) => {
     const users = await User.find();
 
-    res.render("admin.ejs", { users });
+    res.render("admin/manage-users.ejs", { users });
 }
 
 const showUser = async (req, res) => {
