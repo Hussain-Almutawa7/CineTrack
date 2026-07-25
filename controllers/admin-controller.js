@@ -12,7 +12,7 @@ const showUser = async (req, res) => {
 }
 
 const addUser = async (req, res) => {
-
+    
 }
 
 const editUser = async (req, res) => {

@@ -173,7 +173,8 @@ h2 {
     font-weight: 600;
 }
 
-.form-input {
+.form-input,
+.form-select {
     width: 100%;
     padding: 12px 14px;
     color: rgb(243, 244, 246);
@@ -187,6 +188,16 @@ h2 {
 
 .form-input:focus {
     border-color: rgb(129, 140, 248);
+}
+
+.form-select:focus {
+    border-color: rgb(129, 140, 248);
+    box-shadow: 0 0 0 3px rgba(92, 70, 232, 0.2);
+}
+
+.form-select option {
+    background-color: rgb(30, 42, 59);
+    color: white;
 }
 
 .primary-button {
@@ -887,6 +898,12 @@ strong {
     text-align: center !important;
     color: rgb(174, 185, 204);
 }
+
+.user-information {
+    padding: 20px;
+}
+
+
 
 /* Error Style */
 .error-page {
