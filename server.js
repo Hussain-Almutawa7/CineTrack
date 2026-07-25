@@ -86,12 +86,26 @@ app.delete("/admin/users/:userId", isSignedIn, isAdmin, adminCtrl.deleteUser);
 // MOVIE DETAILS ROUTE
 app.get("/:mediaType/:mediaId", movieCtrl.mediaDetails);
 
-// HANDLE ERROR ROUTE
-app.get("/*splat", (req, res) => {
+// HANDLE ERROR ROUTES
+app.use((req, res) => {
     res.status(404).render("error.ejs", {
         statusCode: 404,
         title: "Page Not Found",
         message: "The page you are looking for does not exist.",
+        returnLink: "/",
+        returnText: "Return Home",
+    });
+});
+
+app.use((error, req, res, next) => {
+    console.log(error);
+
+    if(res.headerSent) return next(error);
+
+    res.status(500).render("error.ejs", {
+        statusCode: 500,
+        title: "Something Went Wrong",
+        message: "We could not load this page try again",
         returnLink: "/",
         returnText: "Return Home",
     });

@@ -16,6 +16,7 @@ const home = async (req, res) => {
         })
     } catch (error) {
         console.log("Fetch movie error: " + error.message);
+        next(error);
     }
 }
 
