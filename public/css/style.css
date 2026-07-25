@@ -308,6 +308,18 @@ h2 {
     font-size: 14px;
 }
 
+.missing-poster {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: rgb(156, 163, 175);
+    text-align: center;
+    background-color: rgb(31, 41, 55);
+}
+
 /* Watchlist Style */
 .watchlist-container {
     display: flex;
@@ -464,10 +476,13 @@ h2 {
 }
 
 @media(max-width: 800px) {
-    .media-details-poster {
+
+    .media-details-poster,
+    .media-details-missing-poster {
         max-width: 300px;
     }
 }
+
 
 /* Rate Style */
 .star-container {

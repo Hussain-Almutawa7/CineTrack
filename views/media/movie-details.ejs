@@ -5,8 +5,12 @@
             background-image:url('https://image.tmdb.org/t/p/original<%= tmdbMedia.backdropPath %>');
             ">
             <div class="media-details-container">
-                <img class="media-details-poster" src="https://image.tmdb.org/t/p/w500<%= tmdbMedia.posterPath %>"
-                    alt="<%= tmdbMedia.title %> ">
+
+                <% if (tmdbMedia.posterPath) { %>
+                    <img class="media-details-poster" src="https://image.tmdb.org/t/p/w500<%= tmdbMedia.posterPath %>" alt="<%= tmdbMedia.title %> ">
+                <% } else { %>
+                    <div class="missing-poster media-details-poster">No poster available</div>
+                <% } %>
 
                 <div class="media-details-content">
                     <h1>

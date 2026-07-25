@@ -13,7 +13,12 @@
                     <% if(index <= 11) {%>
                         <a href="/movie/<%= movie.id %>">
                             <div class="movie-items">
-                                <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+
+                                <% if (movie.poster_path) { %>
+                                    <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+                                <% } else { %>
+                                    <div class="missing-poster">No poster available</div>
+                                <% } %>
 
                                 <div class="movie-text">
                                     <span><%= movie.title %></span>
@@ -32,7 +37,12 @@
                     <% if(index <= 11) {%>
                         <a href="/tv/<%= movie.id %>">
                             <div class="movie-items">
-                                <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+                                
+                                <% if (movie.poster_path) { %>
+                                    <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+                                <% } else { %>
+                                    <div class="missing-poster">No poster available</div>
+                                <% } %>
                                 
                                 <div class="movie-text">
                                     <span><%= movie.name %></span>
@@ -51,7 +61,12 @@
                     <% if(index <= 11) {%>
                         <a href="/movie/<%= movie.id %>">
                             <div class="movie-items">
-                                <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+
+                                <% if (movie.poster_path) { %>
+                                    <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+                                <% } else { %>
+                                    <div class="missing-poster">No poster available</div>
+                                <% } %>
 
                                 <div class="movie-text">
                                     <span><%= movie.title %></span>
@@ -70,7 +85,12 @@
                     <% if(index <= 11) {%>
                         <a href="/tv/<%= movie.id %>">
                             <div class="movie-items">
-                                <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+                                
+                                <% if (movie.poster_path) { %>
+                                    <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= movie.poster_path%>" alt="<%= movie.title %>">
+                                <% } else { %>
+                                    <div class="missing-poster">No poster available</div>
+                                <% } %>
                                 
                                 <div class="movie-text">
                                     <span><%= movie.name %></span>

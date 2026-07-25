@@ -53,7 +53,7 @@ const showSignInForm = (req, res) => {
 };
 
 const signIn = async (req, res) => {
-    const identifier = req.body.identifier.trim(); // To make the code concise and cleaner instead of me repeating
+    const identifier = req.body.identifier.trim();
 
     const userInDatabase = await User.findOne({
         $or: [

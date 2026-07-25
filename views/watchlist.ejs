@@ -11,7 +11,12 @@
             <% watchlist.forEach(media => { %>
                 <a href="/<%= media.mediaType %>/<%= media.id %>">
                     <div class="movie-items">
-                        <img class="home-poster" src="https://image.tmdb.org/t/p/w300<%= media.posterPath %>" alt="<%= media.title %>">
+
+                        <% if (media.posterPath) { %>
+                            <img class="home-poster" src="https://image.tmdb.org/t/p/w200<%= media.posterPath%>" alt="<%= media.title %>">
+                        <% } else { %>
+                            <div class="missing-poster">No poster available</div>
+                        <% } %>
 
                         <div class="movie-text">
                             <span><%= media.title %></span>
