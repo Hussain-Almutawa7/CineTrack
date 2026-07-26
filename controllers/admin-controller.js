@@ -50,7 +50,7 @@ const addUser = async (req, res) => {
 
 const editUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    
+
     const userData = {
         username: req.body.username,
         email: req.body.email,
@@ -86,7 +86,7 @@ const editUser = async (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
-
+    
 }
 
 module.exports = {
