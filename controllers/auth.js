@@ -6,6 +6,8 @@ const showSignUpForm = (req, res) => {
 };
 
 const signUp = async (req, res) => {
+    const password = req.body.password;
+
     const userInDatabase = await User.findOne({
         $or: [
             {
@@ -27,7 +29,17 @@ const signUp = async (req, res) => {
         });
     }
 
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    if (!password || password.trim().length < 8) {
+        return res.status(400).render("error.ejs", {
+            statusCode: 400,
+            title: "Invalid Password",
+            message: "The password must contain at least 8 characters.",
+            returnLink: "/auth/sign-up",
+            returnText: "Return to Sign Up",
+        });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const userData = {
         username: req.body.username,
