@@ -725,6 +725,7 @@ strong {
 
 .review-comment {
     text-wrap: balance;
+    margin-top: 10px;
 }
 
 /* Browse styling */
