@@ -10,7 +10,9 @@ const showUsers = async (req, res) => {
 }
 
 const showUser = async (req, res) => {
+    const userId = req.params.userId;
 
+    res.redirect(`/user/${userId}`);
 }
 
 const addUser = async (req, res) => {

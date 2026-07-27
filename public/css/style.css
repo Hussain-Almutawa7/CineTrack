@@ -847,7 +847,7 @@ strong {
 
 .user-role {
     display: inline-block;
-    padding: 5px 10px;
+    padding: 7px 12px;
     border-radius: 20px;
     background-color: rgba(92, 70, 232, 0.2);
     color: #a99cff;
@@ -904,6 +904,7 @@ strong {
     padding: 20px;
 }
 
+/* Profile Page Style */
 
 
 /* Error Style */

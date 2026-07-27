@@ -26,6 +26,7 @@ const rateCtrl = require("./controllers/rate-controller.js");
 const watchlistCtrl = require("./controllers/watchlist-controller.js");
 const browseCtrl = require("./controllers/browse-controller.js");
 const adminCtrl = require("./controllers/admin-controller.js");
+const userProfileCtrl = require("./controllers/user-profile-controller.js");
 
 const app = express();
 
@@ -82,6 +83,9 @@ app.post("/admin/users", isSignedIn, isAdmin, adminCtrl.addUser)
 app.get("/admin/users/:userId", isSignedIn, isAdmin, adminCtrl.showUser);
 app.put("/admin/users/:userId", isSignedIn, isAdmin, adminCtrl.editUser);
 app.delete("/admin/users/:userId", isSignedIn, isAdmin, adminCtrl.deleteUser);
+
+// USER PROFILE ROUTE
+app.get("/user/:userId", isSignedIn, userProfileCtrl.showUserProfile)
 
 // MOVIE DETAILS ROUTE
 app.get("/:mediaType/:mediaId", movieCtrl.mediaDetails);

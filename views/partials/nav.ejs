@@ -43,6 +43,8 @@
             <% if (user) { %>
                 <a class="site-nav-link" href="/watchlist">Watchlist</a>
 
+                <a class="site-nav-link" href="/user/<%= user.id %>">Your Profile</a>
+
                 <% if(user.role === "admin") { %>
                     <a class="site-nav-link" href="/admin/users">Admin</a>
                 <% } %>
