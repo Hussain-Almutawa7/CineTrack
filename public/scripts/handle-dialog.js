@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupDialogue(".edit-review", ".open-edit-review", ".close-edit-review", ".cancel-edit-review");
     setupDialogue(".add-rate", ".open-add-rating", ".close-rate", ".cancel-rate");
     setupDialogue(".add-user", ".open-add-user", ".close-add-user", ".cancel-user");
+    setupDialogue(".edit-profile", ".open-edit-profile", ".close-edit-profile", ".cancel-edit-profile");
 
     const setupEditUserDialogues = () => {
         const openButtons = document.querySelectorAll(".open-edit-user");

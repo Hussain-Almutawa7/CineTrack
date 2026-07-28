@@ -1,7 +1,223 @@
 <%- include("./partials/nav.ejs") %>
-    <main>
-        <h1>hello <%= profileUser.username %></h1>
-        <p><%= reviews.length %></p>
-    </main>
+
+<main class="profile-page">
+    <% if (isAdminViewing) { %>
+        <a class="profile-back-link" href="/admin/users">
+            ← Back to Manage Users
+        </a>
+    <% } %>
+
+    <section class="profile-header-card">
+        <div class="profile-identity">
+            <div class="profile-avatar">
+                <%= profileUser.username.charAt(0).toUpperCase() %>
+            </div>
+
+            <div class="profile-information">
+                <div class="profile-name-row">
+                    <h1><%= profileUser.username %></h1>
+
+                    <span class="profile-role"> <%= profileUser.role %></span>
+                </div>
+
+                <p class="profile-email"><%= profileUser.email %></p>
+
+                <% if (profileUser.createdAt) { %>
+                    <p class="profile-member-date">Member since: <%= profileUser.createdAt.toLocaleDateString() %></p>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="profile-header-actions">
+            <% if (isOwnerProfile) { %>
+                <button class="primary-button open-edit-profile" type="button">Edit Profile</button>
+                <a class="profile-secondary-button" href="/watchlist">View Watchlist</a>
+            <% } %>
+        </div>
+    </section>
+
+    <section class="profile-statistics">
+        <a class="profile-stat-card profile-stat-link" href="<%= isOwnerProfile ? '/watchlist' : '#' %>">
+            <strong><%= watchlistCount %></strong>
+            <span>Watchlist Items</span>
+        </a>
+
+        <div class="profile-stat-card">
+            <strong><%= reviewCount %></strong>
+            <span>Reviews Written</span>
+        </div>
+
+        <div class="profile-stat-card">
+            <strong><%= ratingCount %></strong>
+            <span>Titles Rated</span>
+        </div>
+
+        <div class="profile-stat-card">
+            <strong><%= avgRating !== null ? avgRating : "—" %></strong>
+
+            <span>Average Rating</span>
+        </div>
+    </section>
+
+    <section class="profile-activity-grid">
+        <section class="profile-activity-card">
+            <header class="profile-section-header">
+                <div>
+                    <h2>Recent Reviews</h2>
+
+                    <p>
+                        <% if (isOwnerProfile) { %>
+                            Your latest CineTrack reviews.
+                        <% } else { %>
+                            Latest reviews by <%= profileUser.username %>.
+                        <% } %>
+                    </p>
+                </div>
+            </header>
+
+            <% if (recentReviews.length === 0) { %>
+                <div class="profile-empty-state">
+                    <p>No reviews have been written yet.</p>
+
+                    <% if (isOwnerProfile) { %>
+                        <a class="primary-button" href="/browse">Browse Titles</a>
+                    <% } %>
+                </div>
+            <% } else { %>
+                <div class="profile-activity-list">
+                    <% recentReviews.forEach(review => { %>
+                        <article class="profile-review-item">
+                            <div class="profile-activity-heading">
+                                <h3>
+                                    <% if (review.media?.mediaType === "movie") { %>
+                                        Movie Review
+                                    <% } else { %>
+                                        TV Show Review
+                                    <% } %>
+                                </h3>
+
+                                <% if (review.createdAt) { %>
+                                    <span class="profile-activity-date"><%= review.createdAt.toLocaleDateString() %></span>
+                                <% } %>
+                            </div>
+
+                            <p class="profile-review-comment"><%= review.comment %></p>
+
+                            <% if (review.media) { %>
+                                <a class="profile-view-link" href="/<%= review.media.mediaType === 'movie' ? 'movie' : 'tv' %>/<%= review.media.tmdbId %>">
+                                    View Title
+                                </a>
+                            <% } %>
+                        </article>
+                    <% }) %>
+                </div>
+            <% } %>
+        </section>
+
+        <section class="profile-activity-card">
+            <header class="profile-section-header">
+                <div>
+                    <h2>Recent Ratings</h2>
+
+                    <p>
+                        <% if (isOwnerProfile) { %>
+                            Your latest movie and TV ratings.
+                        <% } else { %>
+                            Latest ratings by <%= profileUser.username %>.
+                        <% } %>
+                    </p>
+                </div>
+            </header>
+
+            <% if (recentRatings.length === 0) { %>
+                <div class="profile-empty-state">
+                    <p>No titles have been rated yet.</p>
+
+                    <% if (isOwnerProfile) { %>
+                        <a class="primary-button" href="/browse">Browse Titles</a>
+                    <% } %>
+                </div>
+            <% } else { %>
+                <div class="profile-activity-list">
+                    <% recentRatings.forEach(rating => { %>
+                        <article class="profile-rating-item">
+                            <div class="profile-rating-information">
+                                <h3>
+                                    <% if (rating.media?.title) { %>
+                                        <%= rating.media.title %>
+                                    <% } else if (rating.media?.mediaType === "movie") { %>
+                                        Movie
+                                    <% } else { %>
+                                        TV Show
+                                    <% } %>
+                                </h3>
+
+                                <% if (rating.createdAt) { %>
+                                    <span class="profile-activity-date">
+                                        Rated on <%= rating.createdAt.toLocaleDateString() %>
+                                    </span>
+                                <% } %>
+                            </div>
+
+                            <div class="profile-rating-score">
+                                <span>★</span>
+                                <strong><%= rating.rating %>/10</strong>
+                            </div>
+
+                            <% if (rating.media) { %>
+                                <a class="profile-view-link" href="/<%= rating.media.mediaType === 'movie' ? 'movie' : 'tv' %>/<%= rating.media.tmdbId %>">
+                                    View Title
+                                </a>
+                            <% } %>
+                        </article>
+                    <% }) %>
+                </div>
+            <% } %>
+        </section>
+    </section>
+
+    <% if (isOwnerProfile) { %>
+        <dialog class="edit-profile">
+            <form action="/user/<%= profileUser._id %>?_method=PUT" method="POST">
+                <div class="review-form-header">
+                    <h2>Edit Profile</h2>
+                    <button class="close-edit-profile" type="button">X</button>
+                </div>
+
+                <div class="user-information auth-form">
+                    <div class="form-group">
+                        <label class="form-label" for="profile-username">Username</label>
+    
+                        <input class="form-input" id="profile-username" name="username" value="<%= profileUser.username %>" required>
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="form-label" for="profile-email">Email</label>
+    
+                        <input class="form-input" id="profile-email" type="email" name="email" value="<%= profileUser.email %>" required>
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="form-label" for="profile-password">New Password</label>
+    
+                        <input class="form-input" id="profile-password" type="password" name="password" placeholder="Leave empty to keep your password">
+    
+                        <small class="profile-field-help">
+                            A new password must contain at least 8 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-review-buttons">
+                    <button class="cancel-edit-profile" type="button">Cancel</button>
+                    <button class="primary-button" type="submit">Save Changes</button>
+                </div>
+            </form>
+        </dialog>
+    <% } %>
+</main>
+
+<script src="/scripts/handle-dialog.js"></script>
+
 </body>
 </html>

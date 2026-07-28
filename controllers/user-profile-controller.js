@@ -19,7 +19,7 @@ const showUserProfile = async (req, res) => {
     const isOwnerProfile = userId === req.session.user.id;
     const isAdminViewing = req.session.user.role === "admin" && !isOwnerProfile;
 
-    if (!isOwnProfile && req.session.user.role !== "admin") {
+    if (!isOwnerProfile && req.session.user.role !== "admin") {
         return res.status(403).render("error.ejs", {
             statusCode: 403,
             title: "Access Denied",
@@ -52,8 +52,8 @@ const showUserProfile = async (req, res) => {
 
     res.render("profile-page.ejs", {
         watchlistCount: profileUser.watchlist?.length || 0,
-        recentReveiws: reviews.slice(0, 3),
-        recentRating: ratings.slice(0, 3),
+        recentReviews: reviews.slice(0, 3),
+        recentRatings: ratings.slice(0, 3),
         reviewCount: reviews.length,
         ratingCount: ratings.length,
         isAdminViewing,
