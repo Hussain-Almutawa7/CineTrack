@@ -25,10 +25,10 @@
 }
 
 .cinetrack-sidebar .nav-link {
-    color: rgb(203, 213, 225);
     padding: 11px 16px;
     margin-bottom: 5px;
     border-radius: 8px;
+    color: rgb(203, 213, 225);
     transition: background-color 0.15s, color 0.15s;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .sidebar-account {
-    color: #cbd5e1;
+    color: rgb(203, 213, 225);
 }
 
 .sidebar-account:hover {
@@ -62,22 +62,36 @@
     font-weight: bold;
 }
 
-.cinetrack-sidebar .dropdown-menu {
-    background-color: #182235;
+/* Sidebar and navbar dropdowns */
+
+.cinetrack-sidebar .dropdown-menu,
+.site-nav .dropdown-menu {
+    background-color: rgb(24, 34, 53);
     border: 1px solid rgb(67, 81, 106);
 }
 
-.cinetrack-sidebar .dropdown-item {
-    color: #cbd5e1;
+.cinetrack-sidebar .dropdown-item,
+.site-nav .dropdown-item {
+    color: rgb(203, 213, 225);
 }
 
-.cinetrack-sidebar .dropdown-item:hover {
+.cinetrack-sidebar .dropdown-item:hover,
+.cinetrack-sidebar .dropdown-item:focus,
+.site-nav .dropdown-item:hover,
+.site-nav .dropdown-item:focus {
     color: white;
     background-color: rgba(92, 70, 232, 0.18);
 }
 
-.cinetrack-sidebar .dropdown-divider {
+.cinetrack-sidebar .dropdown-divider,
+.site-nav .dropdown-divider {
     border-color: rgb(67, 81, 106);
+    opacity: 1;
+}
+
+.cinetrack-sidebar .dropdown-menu form,
+.site-nav .dropdown-menu form {
+    margin: 0;
 }
 
 .admin-content {

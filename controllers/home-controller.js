@@ -1,25 +1,26 @@
 const tmdbService = require("../services/tmdb");
 
-const home = async (req, res) => {
+const home = async (req, res, next) => {
     try {
-        const movieInfo = await tmdbService.getPopularMedia("movie");
-        const tvInfo = await tmdbService.getPopularMedia("tv");
-
-        const trendingMovies = await tmdbService.getTrendingMedia("movie");
-        const trendingTvs = await tmdbService.getTrendingMedia("tv");
+        const [movieInfo, tvInfo, trendingMovies,trendingTvs] = await Promise.all([
+            tmdbService.getPopularMedia("movie"),
+            tmdbService.getPopularMedia("tv"),
+            tmdbService.getTrendingMedia("movie"),
+            tmdbService.getTrendingMedia("tv"),
+        ]);
 
         res.render("home.ejs", {
             movies: movieInfo.results,
             tvs: tvInfo.results,
-            trendingTvs: trendingTvs.results,
             trendingMovies: trendingMovies.results,
-        })
+            trendingTvs: trendingTvs.results,
+        });
     } catch (error) {
-        console.log("Fetch movie error: " + error.message);
+        console.log("Homepage fetch error:", error.message);
         next(error);
     }
-}
+};
 
 module.exports = {
     home,
-}
+};
