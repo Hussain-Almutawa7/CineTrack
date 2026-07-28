@@ -1,3 +1,4 @@
+const tmdbService = require("../services/tmdb");
 const User = require("../models/user");
 const Review = require("../models/review");
 const Rating = require("../models/rating");
@@ -35,9 +36,33 @@ const showUserProfile = async (req, res) => {
         user: userId
     }).populate("media").sort({ createdAt: -1 });
 
+
+
+    const recentReviews = await Promise.all(
+        reviews.slice(0, 3).map(async review => {
+            const details = await tmdbService.getMediaDetails(review.media.mediaType, review.media.tmdbId);
+
+            return {
+                ...review.toObject(),
+                title: review.media.mediaType === "movie" ? details.title : details.name,
+            };
+        })
+    );
+
     let ratings = await Rating.find({
         user: userId
     }).populate("media").sort({ createdAt: -1 });
+
+    const recentRatings = await Promise.all(
+        ratings.slice(0, 3).map(async rating => {
+            const details = await tmdbService.getMediaDetails(rating.media.mediaType, rating.media.tmdbId);
+
+            return {
+                ...rating.toObject(),
+                title: rating.media.mediaType === "movie" ? details.title : details.name,
+            }
+        })
+    );
 
     if (ratings.length > 0) {
         let totalRating = 0;
@@ -52,8 +77,8 @@ const showUserProfile = async (req, res) => {
 
     res.render("profile-page.ejs", {
         watchlistCount: profileUser.watchlist?.length || 0,
-        recentReviews: reviews.slice(0, 3),
-        recentRatings: ratings.slice(0, 3),
+        recentReviews,
+        recentRatings,
         reviewCount: reviews.length,
         ratingCount: ratings.length,
         isAdminViewing,

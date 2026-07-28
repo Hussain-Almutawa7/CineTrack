@@ -88,13 +88,7 @@
                     <% recentReviews.forEach(review => { %>
                         <article class="profile-review-item">
                             <div class="profile-activity-heading">
-                                <h3>
-                                    <% if (review.media?.mediaType === "movie") { %>
-                                        Movie Review
-                                    <% } else { %>
-                                        TV Show Review
-                                    <% } %>
-                                </h3>
+                                <h3><%= review.title %></h3>
 
                                 <% if (review.createdAt) { %>
                                     <span class="profile-activity-date"><%= review.createdAt.toLocaleDateString() %></span>
@@ -104,9 +98,7 @@
                             <p class="profile-review-comment"><%= review.comment %></p>
 
                             <% if (review.media) { %>
-                                <a class="profile-view-link" href="/<%= review.media.mediaType === 'movie' ? 'movie' : 'tv' %>/<%= review.media.tmdbId %>">
-                                    View Title
-                                </a>
+                                <a class="profile-view-link" href="/<%= review.media.mediaType === 'movie' ? 'movie' : 'tv' %>/<%= review.media.tmdbId %>">View Details</a>
                             <% } %>
                         </article>
                     <% }) %>
@@ -142,15 +134,7 @@
                     <% recentRatings.forEach(rating => { %>
                         <article class="profile-rating-item">
                             <div class="profile-rating-information">
-                                <h3>
-                                    <% if (rating.media?.title) { %>
-                                        <%= rating.media.title %>
-                                    <% } else if (rating.media?.mediaType === "movie") { %>
-                                        Movie
-                                    <% } else { %>
-                                        TV Show
-                                    <% } %>
-                                </h3>
+                                <h3><%= rating.title %></h3>
 
                                 <% if (rating.createdAt) { %>
                                     <span class="profile-activity-date">
@@ -165,9 +149,7 @@
                             </div>
 
                             <% if (rating.media) { %>
-                                <a class="profile-view-link" href="/<%= rating.media.mediaType === 'movie' ? 'movie' : 'tv' %>/<%= rating.media.tmdbId %>">
-                                    View Title
-                                </a>
+                                <a class="profile-view-link" href="/<%= rating.media.mediaType === 'movie' ? 'movie' : 'tv' %>/<%= rating.media.tmdbId %>">View Details</a>
                             <% } %>
                         </article>
                     <% }) %>
