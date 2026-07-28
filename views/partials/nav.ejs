@@ -43,17 +43,46 @@
             <% if (user) { %>
                 <a class="site-nav-link" href="/watchlist">Watchlist</a>
 
-                <a class="site-nav-link" href="/user/<%= user.id %>">Your Profile</a>
+                    <div class="dropdown">
+                        <a
+                            href="#"
+                            class="sidebar-account d-flex align-items-center text-decoration-none dropdown-toggle"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <div class="sidebar-avatar me-2">
+                                <%= user.username.charAt(0).toUpperCase() %>
+                            </div>
 
-                <% if(user.role === "admin") { %>
-                    <a class="site-nav-link" href="/admin/users">Admin</a>
-                <% } %>
+                            <strong><%= user.username %></strong>
+                        </a>
 
-                <form class="site-nav-form" action="/auth/sign-out?_method=DELETE" method="POST">
-                    <button class="primary-button site-nav-button" type="submit">
-                        Sign Out
-                    </button>
-                </form>
+                        <ul class="dropdown-menu dropdown-menu-end shadow">
+
+                            <li>
+                                <a class="dropdown-item" href="/user/<%= user.id %>">Your Profile</a>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li>
+                                <% if(user.role === "admin") { %>
+                                    <a class="dropdown-item" href="/admin/users">Admin Panel</a>
+                                <% } %>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li>
+                                <form action="/auth/sign-out?_method=DELETE" method="POST">
+                                    <button class="dropdown-item" type="submit">Sign out</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                 <% } else { %>
                     <a class="site-nav-link" href="/auth/sign-up">Sign Up</a>
                     <a class="site-nav-link" href="/auth/sign-in">Sign In</a>
