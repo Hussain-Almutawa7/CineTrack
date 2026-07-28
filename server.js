@@ -84,7 +84,7 @@ app.get("/admin/users/:userId", isSignedIn, isAdmin, adminCtrl.showUser);
 app.put("/admin/users/:userId", isSignedIn, isAdmin, adminCtrl.editUser);
 app.delete("/admin/users/:userId", isSignedIn, isAdmin, adminCtrl.deleteUser);
 
-// USER PROFILE ROUTE
+// USER PROFILE ROUTES
 app.get("/user/:userId", isSignedIn, userProfileCtrl.showUserProfile);
 app.put("/user/:userId", isSignedIn, userProfileCtrl.editUserProfile);
 app.delete("/user/:userId", isSignedIn, userProfileCtrl.deleteUserProfile);

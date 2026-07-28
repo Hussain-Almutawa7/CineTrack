@@ -89,11 +89,45 @@ const showUserProfile = async (req, res) => {
 }
 
 const editUserProfile = async (req, res) => {
+    const userId = req.params.userId;
+    const password = req.body.password;
 
+    const userData = {
+        username: req.body.username,
+        email: req.body.email,
+    }
+
+    if (password && password.trim()) {
+        if (password.trim().length < 8) {
+            return res.status(400).render("error.ejs", {
+                statusCode: 400,
+                title: "Invalid Password",
+                message: "The new password must contain at least 8 characters.",
+                returnLink: "/admin/users",
+                returnText: "Return to Manage Users",
+            });
+        }
+
+        userData.password = await bcrypt.hash(password, 10);
+    }
+
+    await User.findByIdAndUpdate(userId, userData, {
+        runValidators: true,
+    });
+
+    res.redirect(`/user/${userId}`);
 }
 
 const deleteUserProfile = async (req, res) => {
+    const userId = req.params.userId;
 
+    await Review.deleteMany({ user: userId });
+    await Rating.deleteMany({ user: userId });
+    await User.findByIdAndDelete(userId);
+
+    req.session.destroy(() => {
+        res.redirect("/");
+    });
 }
 
 module.exports = {
