@@ -31,7 +31,9 @@
         <div class="profile-header-actions">
             <% if (isOwnerProfile) { %>
                 <button class="primary-button open-edit-profile" type="button">Edit Profile</button>
-                <a class="profile-secondary-button" href="/watchlist">View Watchlist</a>
+                <form action="/user/<%= profileUser._id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="primary-button">Delete Profile</button>
+                </form>
             <% } %>
         </div>
     </section>

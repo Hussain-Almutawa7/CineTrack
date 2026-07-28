@@ -1014,6 +1014,15 @@ strong {
     margin: 0;
 }
 
+.profile-header-actions form button {
+    background-color: darkred;
+    transition: 0.15s;
+}
+
+.profile-header-actions form button:hover {
+    background-color: rgba(139, 0, 0, 0.85);
+}
+
 .profile-secondary-button {
     border: 1px solid rgb(92, 70, 232);
     border-radius: 7px;
@@ -1079,7 +1088,6 @@ strong {
 .profile-activity-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: start;
     gap: 22px;
 }
 

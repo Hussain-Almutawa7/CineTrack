@@ -88,6 +88,16 @@ const showUserProfile = async (req, res) => {
     });
 }
 
+const editUserProfile = async (req, res) => {
+
+}
+
+const deleteUserProfile = async (req, res) => {
+
+}
+
 module.exports = {
     showUserProfile,
+    editUserProfile,
+    deleteUserProfile,
 }

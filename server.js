@@ -85,7 +85,9 @@ app.put("/admin/users/:userId", isSignedIn, isAdmin, adminCtrl.editUser);
 app.delete("/admin/users/:userId", isSignedIn, isAdmin, adminCtrl.deleteUser);
 
 // USER PROFILE ROUTE
-app.get("/user/:userId", isSignedIn, userProfileCtrl.showUserProfile)
+app.get("/user/:userId", isSignedIn, userProfileCtrl.showUserProfile);
+app.put("/user/:userId", isSignedIn, userProfileCtrl.editUserProfile);
+app.delete("/user/:userId", isSignedIn, userProfileCtrl.deleteUserProfile);
 
 // MOVIE DETAILS ROUTE
 app.get("/:mediaType/:mediaId", movieCtrl.mediaDetails);
