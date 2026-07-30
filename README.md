@@ -2,7 +2,8 @@
 
 _A full-stack movie and TV tracking application where users can discover media, create reviews, submit ratings, and manage a personal watchlist._
 
-<img width="2315" height="1361" alt="image" src="https://github.com/user-attachments/assets/b6a97d6f-f531-4d42-bbd3-6db0e601b3aa" />
+<img width="2318" height="1363" alt="image" src="https://github.com/user-attachments/assets/d449d067-d432-4ba9-9af3-3775e9998d2b" />
+
 
 ## Getting Started
 
