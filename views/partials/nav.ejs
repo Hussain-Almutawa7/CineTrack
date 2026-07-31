@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="/css/sidebar.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" type="image/png" href="/images/cinetrack-icon.png">
+
+    <!-- My JS -->
+    <script src="/scripts/delete-confirmation.js" defer></script>
 </head>
 
 <body>
@@ -88,4 +91,20 @@
                     <a class="site-nav-link" href="/auth/sign-in">Sign In</a>
                     <% } %>
         </div>
+
+        <dialog class="delete-confirm-dialog">
+            <div class="delete-confirm-content">
+                <h2>Confirm Delete</h2>
+
+                <p class="delete-confirm-message">
+                    Are you sure you want to delete this item?
+                    This action cannot be undone.
+                </p>
+
+                <div class="delete-confirm-actions">
+                    <button class="cancel-delete" type="button">Cancel</button>
+                    <button class="confirm-delete" type="button">Delete</button>
+                </div>
+            </div>
+        </dialog>
     </nav>

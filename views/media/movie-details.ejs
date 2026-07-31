@@ -68,7 +68,7 @@
                                 <% if(userRating) {%>
                                     <button class="open-add-rating">Your Rating: <%= userRating.rating %>/10</button>
                                     
-                                    <form action="/<%= mediaType %>/<%= tmdbMedia.id %>/rating/<%= userRating.id %>?_method=DELETE" method="POST">
+                                    <form class="delete-form" data-delete-name="this rating" action="/<%= mediaType %>/<%= tmdbMedia.id %>/rating/<%= userRating.id %>?_method=DELETE" method="POST">
                                         <button type="submit">Delete Rating</button>
                                     </form>
                                 <% } else { %>
@@ -154,8 +154,7 @@
                         <% if(user && review.user.equals(user.id)) {%>
                             <div class="specific-review-buttons">
                                 <button class="open-edit-review">Edit</button>
-                                <form action="/<%= mediaType %>/<%= tmdbMedia.id %>/reviews/<%= review.id %>?_method=DELETE"
-                                    method="POST">
+                                <form class="delete-form" data-delete-name="this review" action="/<%= mediaType %>/<%= tmdbMedia.id %>/reviews/<%= review.id %>?_method=DELETE" method="POST">
                                     <button type="submit" class="delete-review">Delete</button>
                                 </form>
                             </div>

@@ -1290,6 +1290,68 @@ strong {
     }
 }
 
+/* Confirm Delete Style */
+.delete-confirm-dialog {
+    width: min(450px, calc(100% - 30px));
+    padding: 0;
+    color: white;
+    background-color: rgb(38, 49, 65);
+    border: 1px solid rgb(75, 85, 99);
+    border-radius: 12px;
+}
+
+.delete-confirm-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.delete-confirm-content {
+    padding: 26px;
+}
+
+.delete-confirm-content h2 {
+    margin: 0 0 12px;
+}
+
+.delete-confirm-message {
+    margin: 0;
+    color: rgb(203, 213, 225);
+    line-height: 1.6;
+}
+
+.delete-confirm-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 26px;
+}
+
+.cancel-delete,
+.confirm-delete {
+    padding: 10px 18px;
+    color: white;
+    font: inherit;
+    font-weight: 600;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.cancel-delete {
+    background-color: rgb(51, 65, 85);
+}
+
+.cancel-delete:hover {
+    background-color: rgb(71, 85, 105);
+}
+
+.confirm-delete {
+    background-color: darkred;
+}
+
+.confirm-delete:hover {
+    background-color: rgb(120, 0, 0);
+}
+
 /* Error Style */
 .error-page {
     min-height: calc(100vh - 80px);
